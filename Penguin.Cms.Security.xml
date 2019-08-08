@@ -1,0 +1,621 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Penguin.Cms.Security</name>
+    </assembly>
+    <members>
+        <member name="M:Penguin.Cms.Security.Extensions.SecurityGroupExtensions.SecurityGroupGuids(Penguin.Cms.Security.User)">
+            <summary>
+            Returns a list of Guids representing the user themselves, all groups, and all roles (inc recursive)
+            </summary>
+            <param name="target">The user to check</param>
+            <returns>A list of Guids representing the user themselves, all groups, and all roles (inc recursive)</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.SecurityGroupExtensions.SecurityGroups(Penguin.Cms.Security.User)">
+            <summary>
+            Gets a list of security groups for the user containing themselves, all groups, and all roles (inc recursive)
+            </summary>
+            <param name="target">The user to retrieve the security groups for</param>
+            <returns>A list of security groups for the user containing themselves, all groups, and all roles (inc recursive)</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.SecurityGroupExtensions.SecurityGroups(Penguin.Cms.Security.Interfaces.IHasGroupsAndRoles)">
+            <summary>
+            Gets a list of security group guids for the target containing all groups, and all roles (inc recursive)
+            </summary>
+            <param name="target">The user to retrieve the security groups for</param>
+            <returns>A list of security group guids for the user containing all groups, and all roles (inc recursive)</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.SecurityGroupExtensions.SecurityGroups(Penguin.Cms.Security.Interfaces.IHasGroups)">
+            <summary>
+            Returns a list of Guids representing ONLY the groups (not roles) that an object belongs to
+            </summary>
+            <param name="target">The target to check</param>
+            <returns>A list of Guids representing ONLY the groups (not roles) that an object belongs to</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.SecurityGroupExtensions.SecurityGroups(Penguin.Cms.Security.Interfaces.IHasRoles)">
+            <summary>
+            Returns a list of Guids representing ONLY the roles (not groups) that an object belongs to
+            </summary>
+            <param name="target">The target to check</param>
+            <returns>A list of Guids representing ONLY the roles (not groups) that an object belongs to</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.SecurityGroupExtensions.GetGroupGuids(Penguin.Cms.Security.Interfaces.IHasGroups)">
+            <summary>
+            Returns a list of Guids representing groups AND roles that an object belongs to
+            </summary>
+            <param name="target">The target to check</param>
+            <returns>A list of Guids representing groups AND roles that an object belongs to</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.SecurityGroupExtensions.GetGroups(Penguin.Cms.Security.Interfaces.IHasGroups)">
+            <summary>
+            Returns a list of security groups including groups AND roles that an object belongs to
+            </summary>
+            <param name="target">The target to check</param>
+            <returns>A list of Guids representing groups AND roles that an object belongs to</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.UserExtensions.AddGroup(Penguin.Cms.Security.Interfaces.IHasGroups,Penguin.Cms.Security.Group)">
+            <summary>
+            Adds a group to the targets group list
+            </summary>
+            <param name="target">The target to add the group to</param>
+            <param name="thisGroup">The group to add</param>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.UserExtensions.AddRole(Penguin.Cms.Security.Interfaces.IHasRoles,Penguin.Cms.Security.Role)">
+            <summary>
+            Adds a role to the targets role list
+            </summary>
+            <param name="target">The target to add a role to</param>
+            <param name="thisRole">The role to add</param>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.UserExtensions.AllRoles(Penguin.Cms.Security.Interfaces.IHasGroupsAndRoles)">
+            <summary>
+            Returns all roles from associated groups as well as directly assigned
+            </summary>
+            <param name="target">The object to retrieve roles for</param>
+            <returns>An IEnumerable of distinct roles</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.UserExtensions.HasGroup(Penguin.Cms.Security.Interfaces.IHasGroups,Penguin.Cms.Security.Group)">
+            <summary>
+            Checks the target group list to see if a group exists
+            </summary>
+            <param name="target">The target to check</param>
+            <param name="thisGroup">The group to check for</param>
+            <returns>If the target has the group in its group list</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.UserExtensions.HasGroup(Penguin.Cms.Security.Interfaces.IHasGroups,System.String)">
+            <summary>
+            Checks the target group list to see if a group exists
+            </summary>
+            <param name="target">The target to check</param>
+            <param name="groupName">The group name to check for</param>
+            <returns>If the target has the group in its group list</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.UserExtensions.HasRole(Penguin.Cms.Security.Interfaces.IHasGroupsAndRoles,Penguin.Cms.Security.Role)">
+            <summary>
+            Checks the target role list and roles associated with groups to see if a role exists
+            </summary>
+            <param name="target">The target to check</param>
+            <param name="thisRole">The role to check for</param>
+            <returns>If the target has the role in its role list</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.UserExtensions.HasRole(Penguin.Cms.Security.Interfaces.IHasRoles,Penguin.Cms.Security.Role)">
+            <summary>
+            Checks the target role list to see if a role exists
+            </summary>
+            <param name="target">The target to check</param>
+            <param name="thisRole">The role to check for</param>
+            <returns>If the target has the role in its role list</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.UserExtensions.HasRole(Penguin.Cms.Security.Interfaces.IHasGroupsAndRoles,System.String)">
+            <summary>
+            Checks the target role list and roles associated with groups to see if a role exists
+            </summary>
+            <param name="target">The target to check</param>
+            <param name="roleName">The name of the role to check for</param>
+            <returns>If the target has the role</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.UserExtensions.HasRole(Penguin.Cms.Security.Interfaces.IHasRoles,System.String)">
+            <summary>
+            Checks the target role list to see if a role exists
+            </summary>
+            <param name="target">The target to check</param>
+            <param name="roleName">The name of the role to check for</param>
+            <returns>If the target has the role in its role list</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.UserExtensions.RemoveGroup(Penguin.Cms.Security.Interfaces.IHasGroups,Penguin.Cms.Security.Group)">
+            <summary>
+            Removes a specified group from the objects group list
+            </summary>
+            <param name="target">The object to remove the group from</param>
+            <param name="thisGroup">The group to remove</param>
+        </member>
+        <member name="M:Penguin.Cms.Security.Extensions.UserExtensions.RemoveRole(Penguin.Cms.Security.Interfaces.IHasRoles,Penguin.Cms.Security.Role)">
+            <summary>
+            Removes a specified role from the objects role list
+            </summary>
+            <param name="target">The object to remove the role from</param>
+            <param name="thisRole">The role to remove</param>
+        </member>
+        <member name="T:Penguin.Cms.Security.Group">
+            <summary>
+            Represents a collection of roles used to assign permissions
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Group.Roles">
+            <summary>
+            The roles granted to members of this group
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Group.Users">
+            <summary>
+            A virtual list of users assigned to this group
+            </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.Group.#ctor">
+            <summary>
+            Creates a new instance of a group and initializes the role list
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.GroupRole">
+            <summary>
+            Base class for assignable permissions objects
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.GroupRole.Description">
+            <summary>
+            What describes the use of this object?
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.GroupRole.IsDefault">
+            <summary>
+            Should this permission be assigned to all new users?
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.GroupRole.Name">
+            <summary>
+            Maps to the External ID
+            </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.GroupRole.ToString">
+            <summary>
+            Returns the Name/ExternalId
+            </summary>
+            <returns>The Name/ExternalId</returns>
+        </member>
+        <member name="T:Penguin.Cms.Security.Interfaces.IDefaultGroups">
+            <summary>
+            Tells the Penguin CMS initialization system that the properties on the object using this represent groups that
+            should be persisted to the database on initialization. This should be changed to a generic type with a type parameter of 
+            "Group" that implements IEnumerable, and is retrieved by reflection (GetDerivedType)
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Interfaces.IDefaultRoles">
+            <summary>
+            Tells the Penguin CMS initialization system that the properties on the object using this represent roles that
+            should be persisted to the database on initialization. This should be changed to a generic type with a type parameter of 
+            "Role" that implements IEnumerable, and is retrieved by reflection (GetDerivedType)
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Interfaces.IDefaultUsers">
+            <summary>
+            Tells the Penguin CMS initialization system that the properties on the object using this represent Users that
+            should be persisted to the database on initialization. This should be changed to a generic type with a type parameter of 
+            "User" that implements IEnumerable, and is retrieved by reflection (GetDerivedType)
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Interfaces.IHasGroups">
+            <summary>
+            An interface denoting that an object can be assigned to groups
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Interfaces.IHasGroups.Groups">
+            <summary>
+            A list of groups that the object belongs to
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Interfaces.IHasGroupsAndRoles">
+            <summary>
+            Used for objects that contain a list of groups, as well as roles
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Interfaces.IHasRoles">
+            <summary>
+            An interface denoting that the object can be directly assigned roles as permissions
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Interfaces.IHasRoles.Roles">
+            <summary>
+            A list of roles that the object belongs to
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.PermissionableEntity">
+            <summary>
+            The base class for any entity that should require permissions based access
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.PermissionableEntity.AddPermissions">
+            <summary>
+            Setting this object adds the defined permissions to the underlying collection.
+            This exists to allow for inline-defining new object permissions without needing to worry 
+            about blowing away existing permissions if the object already exists
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.PermissionableEntity.Permissions">
+            <summary>
+            A list of permission definitions applied to this object
+            </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.PermissionableEntity.#ctor">
+            <summary>
+            Constructs a new instance of a permissionable entity and initializes the permissions list
+            </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.PermissionableEntity.AddPermission(Penguin.Cms.Security.SecurityGroup,Penguin.Cms.Security.PermissionType)">
+            <summary>
+            Adds a new access type for a given security group
+            </summary>
+            <param name="securityGroup">The security group to give access to</param>
+            <param name="permission">The type of access to allow</param>
+        </member>
+        <member name="M:Penguin.Cms.Security.PermissionableEntity.AllowsAccessType(Penguin.Cms.Security.User,Penguin.Cms.Security.PermissionType)">
+            <summary>
+            Checks to see if the user specified is allowed to access this object in a given way, based on its groups/roles
+            </summary>
+            <param name="user">The user to check for access</param>
+            <param name="type">The type of access to check for</param>
+            <returns>Whether or not the given user is allowed the requested access type</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.PermissionableEntity.ShouldSerializePermissions">
+            <summary>
+            When using newtonsoft, this ensures that entity permissions are not passed over with the entity if its serialized
+            This would be a security vulnerability since user/group information might be passed forward
+            </summary>
+            <returns>False</returns>
+        </member>
+        <member name="T:Penguin.Cms.Security.Profile">
+            <summary>
+            A data wrapper for custom user information attached to a used object
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Profile.Fields">
+            <summary>
+            Contains a list of key value pair style objects with additional information for users
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Profile.User">
+            <summary>
+            The user that this profile object applies to
+            </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.Profile.GetData``1">
+            <summary>
+            Deserializes a concrete representation of a user profile from the fields attached to this object
+            </summary>
+            <typeparam name="T">A type representing a collection of user profile information</typeparam>
+            <returns>The deserialized concrete user profile instance</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.Profile.SetData(System.Object)">
+            <summary>
+            Sets the ProfileData fields by reflecting over a concrete instance of a User Profile object
+            </summary>
+            <param name="data">The object to use as the data source from the fields</param>
+        </member>
+        <member name="T:Penguin.Cms.Security.ProfileData">
+            <summary>
+            A Key Value pair representing a single profile field
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.ProfileData.Name">
+            <summary>
+            The name of the field
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.ProfileData.Value">
+            <summary>
+            The value of the field
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Role">
+            <summary>
+            The smallest unit of permission, representing the fundamental reason any group might need to access a resource
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Role.Groups">
+            <summary>
+            Virtual list of Groups that are directly assigned this role
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Role.Users">
+            <summary>
+            Virtual list of Users that are directly assigned this role
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.SecurityGroup">
+            <summary>
+            The most shared class for any object that can be given access to another object, including Roles, Groups, and Users
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.SecurityGroup.Guid">
+            <summary>
+            The GUID for the group. Used for allowing access without needing to reference a specific instance of the object
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.SecurityGroup.Source">
+            <summary>
+            The source for the security group when it was created
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.SecurityGroup.SecurityGroupSource">
+            <summary>
+            Represents the a list of options for the source of this security group
+            </summary>
+        </member>
+        <member name="F:Penguin.Cms.Security.SecurityGroup.SecurityGroupSource.System">
+            <summary>
+            The group was created by the system as part of its core functionality
+            </summary>
+        </member>
+        <member name="F:Penguin.Cms.Security.SecurityGroup.SecurityGroupSource.Client">
+            <summary>
+            The group was created by the client to extend functionality
+            </summary>
+        </member>
+        <member name="F:Penguin.Cms.Security.SecurityGroup.SecurityGroupSource.ActiveDirectory">
+            <summary>
+            The group was automatically pulled from Active Directory
+            </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.SecurityGroup.op_Inequality(Penguin.Cms.Security.SecurityGroup,Penguin.Cms.Security.SecurityGroup)">
+            <summary>
+            Compares based on the type and the ExternalId
+            </summary>
+            <param name="obj1">The first object</param>
+            <param name="obj2">The second object</param>
+            <returns>If they are NOT equal</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.SecurityGroup.op_Equality(Penguin.Cms.Security.SecurityGroup,Penguin.Cms.Security.SecurityGroup)">
+            <summary>
+            Compares based on the type and the ExternalId
+            </summary>
+            <param name="obj1">The first object</param>
+            <param name="obj2">The second object</param>
+            <returns>If they are equal</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.SecurityGroup.Equals(System.Object)">
+            <summary>
+            Compares based on the type and the ExternalId
+            </summary>
+            <param name="obj">The object to compare to</param>
+            <returns>If they are equal</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.SecurityGroup.GetHashCode">
+            <summary>
+            Hashes the Type and the External ID
+            </summary>
+            <returns>Hashes the Type and the External ID</returns>
+        </member>
+        <member name="M:Penguin.Cms.Security.SecurityGroup.ToString">
+            <summary>
+            Returns the ExternalId
+            </summary>
+            <returns>The ExternalId</returns>
+        </member>
+        <member name="T:Penguin.Cms.Security.PermissionType">
+            <summary>
+            Defines the type of access that a security group has to a permissionable entity
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.SecurityGroupPermission">
+            <summary>
+            Represents a set of permissions to define a security groups access to any permissionable entity
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.SecurityGroupPermission.SecurityGroup">
+            <summary>
+            The security group that this permission applies to
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.SecurityGroupPermission.Type">
+            <summary>
+            Defines the type of access that the security group has to the permissionable entity
+            </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.SecurityGroupPermission.#ctor(Penguin.Cms.Security.SecurityGroup,Penguin.Cms.Security.PermissionType)">
+            <summary>
+            Constructs a new instance of this class for the specified security group, using the specified access type
+            </summary>
+            <param name="securityGroup">The security group that this permission applies to </param>
+            <param name="type">The type of access that the security group has to the permissionable entity</param>
+        </member>
+        <member name="M:Penguin.Cms.Security.SecurityGroupPermission.#ctor">
+            <summary>
+            Constructs an empty instance of this class
+            </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.SecurityGroupPermission.HasPermission(Penguin.Cms.Security.PermissionType)">
+            <summary>
+            Checks this permission using flags, to determine if this allows for a particular kind of access
+            </summary>
+            <param name="type">The access type to check for</param>
+            <returns>True if the access should be granted</returns>
+        </member>
+        <member name="T:Penguin.Cms.Security.Static.Groups">
+            <summary>
+            Contains definitions for default groups
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Groups.AllUsers">
+            <summary>
+            A group that serves as a target for all users in any context
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Static.Groups.Descriptions">
+            <summary>
+            Hard coded definitions for default groups
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Static.Groups.Names">
+            <summary>
+            Hard coded names for default system groups
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Groups.SysAdmins">
+            <summary>
+            The highest level of permissions in any system. Should allow access to anything. 
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Static.Roles">
+            <summary>
+            An object containing default roles for the system
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Roles.AdminAccess">
+            <summary>
+            Should be allowed to access the administration page, but not guaranteeing any content
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Roles.AllUsers">
+            <summary>
+            A role assigned to all users in the system regardless of context
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Roles.ContentManager">
+            <summary>
+            The user should be allowed to produce content in the CMS, pages, navigation menus, etc
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Roles.Guest">
+            <summary>
+            Role to handle permissions for users that are not signed in to the CMS
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Roles.ImageManager">
+            <summary>
+            Role for users allowed to upload and edit images, but not other file types
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Roles.LoggedIn">
+            <summary>
+            Role for managing access for any user that is actively logged in to the system
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Roles.PageAuthor">
+            <summary>
+            Role for users that are allowed to edit/update pages, but nothing else
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Static.Roles.Descriptions">
+            <summary>
+            Hardcoded descriptions for default roles
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Static.Roles.Names">
+            <summary>
+            Hard coded names for default roles
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Roles.SysAdmin">
+            <summary>
+            Role to manage access for any system administrators
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Roles.UserManager">
+            <summary>
+            This user should be allowed to manage and create users and permissions
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Static.Users">
+            <summary>
+            Default users to create when the system is initialized
+            </summary>
+            <summary>
+            Default users to create when the system is initialized
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Users.Admin">
+            <summary>
+            The default system administrator log in for the system
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Static.Users.Guest">
+            <summary>
+            A user representing anyone who is not currently logged in to the system
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Static.Users.Descriptions">
+            <summary>
+            Hard coded descriptions for default users
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.Static.Users.Names">
+            <summary>
+            Hard coded names for default users
+            </summary>
+        </member>
+        <member name="T:Penguin.Cms.Security.User">
+            <summary>
+            Represents a collection of identifying information and security properties to allow a single person to be tracked and permissioned within a system
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.User.Email">
+            <summary>
+            A contact email for the user
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.User.Enabled">
+            <summary>
+            If enabled, the user should be allowed to access the system
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.User.FirstName">
+            <summary>
+            The users first name
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.User.Groups">
+            <summary>
+            A collection of groups that the user belongs to
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.User.HashedPassword">
+            <summary>
+            The post-hash password. Setting this will not alter the password in any way
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.User.LastName">
+            <summary>
+            The users last name
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.User.Login">
+            <summary>
+            A unique log in for the user, used to access the system
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.User.LoginAttempts">
+            <summary>
+            This item should increment every time a log in attempt is failed, and reset when sucessfull
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.User.Password">
+            <summary>
+            The password of the user, persisted as a hash. Setting this property will hash the password
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.User.Profile">
+            <summary>
+            A customizable collection of information not otherwise contained on this object
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.User.Roles">
+            <summary>
+            A list of roles directly assigned to the user to ensure access even through group changes
+            </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.User.#ctor">
+            <summary>
+            Creates a new instance of the user object
+            </summary>
+        </member>
+    </members>
+</doc>
