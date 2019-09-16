@@ -10,8 +10,6 @@ namespace Penguin.Cms.Security
     [Serializable]
     public abstract class GroupRole : SecurityGroup
     {
-        #region Properties
-
         /// <summary>
         /// What describes the use of this object?
         /// </summary>
@@ -31,16 +29,10 @@ namespace Penguin.Cms.Security
         [Display(Order = -1000)]
         public string Name { get => this.ExternalId; set => this.ExternalId = value; }
 
-        #endregion Properties
-
-        #region Methods
-
         /// <summary>
         /// Returns the Name/ExternalId
         /// </summary>
         /// <returns>The Name/ExternalId</returns>
         public override string ToString() => this.Name;
-
-        #endregion Methods
     }
 }

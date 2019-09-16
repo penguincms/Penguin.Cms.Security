@@ -8,7 +8,7 @@ namespace Penguin.Cms.Security
     /// Defines the type of access that a security group has to a permissionable entity
     /// </summary>
     [Flags]
-    public enum PermissionType
+    public enum PermissionTypes
     {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         None = 0,
@@ -25,8 +25,6 @@ namespace Penguin.Cms.Security
     /// </summary>
     public class SecurityGroupPermission : KeyedObject
     {
-        #region Properties
-
         /// <summary>
         /// The security group that this permission applies to
         /// </summary>
@@ -36,18 +34,14 @@ namespace Penguin.Cms.Security
         /// <summary>
         /// Defines the type of access that the security group has to the permissionable entity
         /// </summary>
-        public PermissionType Type { get; set; }
-
-        #endregion Properties
-
-        #region Constructors
+        public PermissionTypes Type { get; set; }
 
         /// <summary>
         /// Constructs a new instance of this class for the specified security group, using the specified access type
         /// </summary>
         /// <param name="securityGroup">The security group that this permission applies to </param>
         /// <param name="type">The type of access that the security group has to the permissionable entity</param>
-        public SecurityGroupPermission(SecurityGroup securityGroup, PermissionType type)
+        public SecurityGroupPermission(SecurityGroup securityGroup, PermissionTypes type)
         {
             this.Type = type;
             this.SecurityGroup = securityGroup;
@@ -60,17 +54,11 @@ namespace Penguin.Cms.Security
         {
         }
 
-        #endregion Constructors
-
-        #region Methods
-
         /// <summary>
         /// Checks this permission using flags, to determine if this allows for a particular kind of access
         /// </summary>
         /// <param name="type">The access type to check for</param>
         /// <returns>True if the access should be granted</returns>
-        public bool HasPermission(PermissionType type) => this.Type.HasFlag(type);
-
-        #endregion Methods
+        public bool HasPermission(PermissionTypes type) => this.Type.HasFlag(type);
     }
 }

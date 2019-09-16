@@ -185,21 +185,21 @@
         <member name="T:Penguin.Cms.Security.Interfaces.IDefaultGroups">
             <summary>
             Tells the Penguin CMS initialization system that the properties on the object using this represent groups that
-            should be persisted to the database on initialization. This should be changed to a generic type with a type parameter of 
+            should be persisted to the database on initialization. This should be changed to a generic type with a type parameter of
             "Group" that implements IEnumerable, and is retrieved by reflection (GetDerivedType)
             </summary>
         </member>
         <member name="T:Penguin.Cms.Security.Interfaces.IDefaultRoles">
             <summary>
             Tells the Penguin CMS initialization system that the properties on the object using this represent roles that
-            should be persisted to the database on initialization. This should be changed to a generic type with a type parameter of 
+            should be persisted to the database on initialization. This should be changed to a generic type with a type parameter of
             "Role" that implements IEnumerable, and is retrieved by reflection (GetDerivedType)
             </summary>
         </member>
         <member name="T:Penguin.Cms.Security.Interfaces.IDefaultUsers">
             <summary>
             Tells the Penguin CMS initialization system that the properties on the object using this represent Users that
-            should be persisted to the database on initialization. This should be changed to a generic type with a type parameter of 
+            should be persisted to the database on initialization. This should be changed to a generic type with a type parameter of
             "User" that implements IEnumerable, and is retrieved by reflection (GetDerivedType)
             </summary>
         </member>
@@ -236,7 +236,7 @@
         <member name="P:Penguin.Cms.Security.PermissionableEntity.AddPermissions">
             <summary>
             Setting this object adds the defined permissions to the underlying collection.
-            This exists to allow for inline-defining new object permissions without needing to worry 
+            This exists to allow for inline-defining new object permissions without needing to worry
             about blowing away existing permissions if the object already exists
             </summary>
         </member>
@@ -250,14 +250,14 @@
             Constructs a new instance of a permissionable entity and initializes the permissions list
             </summary>
         </member>
-        <member name="M:Penguin.Cms.Security.PermissionableEntity.AddPermission(Penguin.Cms.Security.SecurityGroup,Penguin.Cms.Security.PermissionType)">
+        <member name="M:Penguin.Cms.Security.PermissionableEntity.AddPermission(Penguin.Cms.Security.SecurityGroup,Penguin.Cms.Security.PermissionTypes)">
             <summary>
             Adds a new access type for a given security group
             </summary>
             <param name="securityGroup">The security group to give access to</param>
             <param name="permission">The type of access to allow</param>
         </member>
-        <member name="M:Penguin.Cms.Security.PermissionableEntity.AllowsAccessType(Penguin.Cms.Security.User,Penguin.Cms.Security.PermissionType)">
+        <member name="M:Penguin.Cms.Security.PermissionableEntity.AllowsAccessType(Penguin.Cms.Security.User,Penguin.Cms.Security.PermissionTypes)">
             <summary>
             Checks to see if the user specified is allowed to access this object in a given way, based on its groups/roles
             </summary>
@@ -272,29 +272,29 @@
             </summary>
             <returns>False</returns>
         </member>
-        <member name="T:Penguin.Cms.Security.Profile">
+        <member name="T:Penguin.Cms.Security.UserProfile">
             <summary>
             A data wrapper for custom user information attached to a used object
             </summary>
         </member>
-        <member name="P:Penguin.Cms.Security.Profile.Fields">
+        <member name="P:Penguin.Cms.Security.UserProfile.Fields">
             <summary>
             Contains a list of key value pair style objects with additional information for users
             </summary>
         </member>
-        <member name="P:Penguin.Cms.Security.Profile.User">
+        <member name="P:Penguin.Cms.Security.UserProfile.User">
             <summary>
             The user that this profile object applies to
             </summary>
         </member>
-        <member name="M:Penguin.Cms.Security.Profile.GetData``1">
+        <member name="M:Penguin.Cms.Security.UserProfile.GetData``1">
             <summary>
             Deserializes a concrete representation of a user profile from the fields attached to this object
             </summary>
             <typeparam name="T">A type representing a collection of user profile information</typeparam>
             <returns>The deserialized concrete user profile instance</returns>
         </member>
-        <member name="M:Penguin.Cms.Security.Profile.SetData(System.Object)">
+        <member name="M:Penguin.Cms.Security.UserProfile.SetData(System.Object)">
             <summary>
             Sets the ProfileData fields by reflecting over a concrete instance of a User Profile object
             </summary>
@@ -400,7 +400,7 @@
             </summary>
             <returns>The ExternalId</returns>
         </member>
-        <member name="T:Penguin.Cms.Security.PermissionType">
+        <member name="T:Penguin.Cms.Security.PermissionTypes">
             <summary>
             Defines the type of access that a security group has to a permissionable entity
             </summary>
@@ -420,7 +420,7 @@
             Defines the type of access that the security group has to the permissionable entity
             </summary>
         </member>
-        <member name="M:Penguin.Cms.Security.SecurityGroupPermission.#ctor(Penguin.Cms.Security.SecurityGroup,Penguin.Cms.Security.PermissionType)">
+        <member name="M:Penguin.Cms.Security.SecurityGroupPermission.#ctor(Penguin.Cms.Security.SecurityGroup,Penguin.Cms.Security.PermissionTypes)">
             <summary>
             Constructs a new instance of this class for the specified security group, using the specified access type
             </summary>
@@ -432,7 +432,7 @@
             Constructs an empty instance of this class
             </summary>
         </member>
-        <member name="M:Penguin.Cms.Security.SecurityGroupPermission.HasPermission(Penguin.Cms.Security.PermissionType)">
+        <member name="M:Penguin.Cms.Security.SecurityGroupPermission.HasPermission(Penguin.Cms.Security.PermissionTypes)">
             <summary>
             Checks this permission using flags, to determine if this allows for a particular kind of access
             </summary>
@@ -461,7 +461,7 @@
         </member>
         <member name="P:Penguin.Cms.Security.Static.Groups.SysAdmins">
             <summary>
-            The highest level of permissions in any system. Should allow access to anything. 
+            The highest level of permissions in any system. Should allow access to anything.
             </summary>
         </member>
         <member name="T:Penguin.Cms.Security.Static.Roles">
@@ -610,11 +610,6 @@
         <member name="P:Penguin.Cms.Security.User.Roles">
             <summary>
             A list of roles directly assigned to the user to ensure access even through group changes
-            </summary>
-        </member>
-        <member name="M:Penguin.Cms.Security.User.#ctor">
-            <summary>
-            Creates a new instance of the user object
             </summary>
         </member>
     </members>

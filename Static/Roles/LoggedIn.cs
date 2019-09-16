@@ -1,11 +1,7 @@
-﻿using Penguin.Cms.Security;
-
-namespace Penguin.Cms.Security.Static
+﻿namespace Penguin.Cms.Security.Static
 {
     public partial class Roles
     {
-        #region Properties
-
         /// <summary>
         /// Role for managing access for any user that is actively logged in to the system
         /// </summary>
@@ -14,7 +10,5 @@ namespace Penguin.Cms.Security.Static
             Name = Names.LoggedIn,
             Description = Descriptions.LoggedIn
         };
-
-        #endregion Properties
     }
 }

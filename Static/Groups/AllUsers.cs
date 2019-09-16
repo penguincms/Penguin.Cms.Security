@@ -1,5 +1,4 @@
-﻿using Penguin.Cms.Security;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Penguin.Cms.Security.Static
 {
@@ -8,8 +7,6 @@ namespace Penguin.Cms.Security.Static
     /// </summary>
     public partial class Groups
     {
-        #region Properties
-
         /// <summary>
         /// A group that serves as a target for all users in any context
         /// </summary>
@@ -22,7 +19,5 @@ namespace Penguin.Cms.Security.Static
                         Roles.AllUsers
                     }
         };
-
-        #endregion Properties
     }
 }

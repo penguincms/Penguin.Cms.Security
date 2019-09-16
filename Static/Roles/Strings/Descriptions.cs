@@ -2,15 +2,11 @@
 {
     public partial class Roles
     {
-        #region Classes
-
         /// <summary>
         /// Hardcoded descriptions for default roles
         /// </summary>
         public static class Descriptions
         {
-            #region Fields
-
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
             public const string AdminAccess = "This role allows a user or group to access the administration panel";
 
@@ -26,9 +22,6 @@
             public const string SysAdmin = "This role is grants access to all aspects of the web site";
             public const string UserManager = "This role is grants access to User, Group, Role Management portions of the web site";
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-            #endregion Fields
         }
-
-        #endregion Classes
     }
 }

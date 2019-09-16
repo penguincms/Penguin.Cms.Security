@@ -2,15 +2,11 @@
 {
     public partial class Roles
     {
-        #region Classes
-
         /// <summary>
         /// Hard coded names for default roles
         /// </summary>
         public static class Names
         {
-            #region Fields
-
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
             public const string AdminAccess = "Admin Access";
 
@@ -26,9 +22,6 @@
             public const string SysAdmin = "System Administrator";
             public const string UserManager = "User Manager";
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-            #endregion Fields
         }
-
-        #endregion Classes
     }
 }

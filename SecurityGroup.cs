@@ -7,19 +7,16 @@ using System.Text;
 
 namespace Penguin.Cms.Security
 {
-
     /// <summary>
     /// The most shared class for any object that can be given access to another object, including Roles, Groups, and Users
     /// </summary>
     [Serializable]
     public class SecurityGroup : UserAuditableEntity // This class cant be abstract because the model binder cant create an instance when posting json
     {
-        #region Properties
-
         /// <summary>
         /// The GUID for the group. Used for allowing access without needing to reference a specific instance of the object
         /// </summary>
-        [DontAllow(DisplayContext.Edit | DisplayContext.List)]
+        [DontAllow(DisplayContexts.Edit | DisplayContexts.List)]
         public override Guid Guid
         {
             get
@@ -56,10 +53,6 @@ namespace Penguin.Cms.Security
         /// </summary>
         public SecurityGroupSource Source { get; set; }
 
-        #endregion Properties
-
-        #region Enums
-
         /// <summary>
         /// Represents the a list of options for the source of this security group
         /// </summary>
@@ -81,10 +74,6 @@ namespace Penguin.Cms.Security
             ActiveDirectory
         }
 
-        #endregion Enums
-
-        #region Methods
-
         /// <summary>
         /// Compares based on the type and the ExternalId
         /// </summary>
@@ -103,7 +92,7 @@ namespace Penguin.Cms.Security
             }
             else
             {
-                return obj1.GetHashCode() != obj2.GetHashCode();
+                return obj1?.GetHashCode() != obj2?.GetHashCode();
             }
         }
 
@@ -125,7 +114,7 @@ namespace Penguin.Cms.Security
             }
             else
             {
-                return obj1.GetHashCode() == obj2.GetHashCode();
+                return obj1?.GetHashCode() == obj2?.GetHashCode();
             }
         }
 
@@ -157,7 +146,5 @@ namespace Penguin.Cms.Security
         /// </summary>
         /// <returns>The ExternalId</returns>
         public override string ToString() => this.ExternalId;
-
-        #endregion Methods
     }
 }

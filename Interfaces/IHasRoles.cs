@@ -7,13 +7,9 @@ namespace Penguin.Cms.Security.Interfaces
     /// </summary>
     public interface IHasRoles
     {
-        #region Properties
-
         /// <summary>
         /// A list of roles that the object belongs to
         /// </summary>
         List<Role> Roles { get; set; }
-
-        #endregion Properties
     }
 }

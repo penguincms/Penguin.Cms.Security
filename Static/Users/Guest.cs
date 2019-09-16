@@ -1,5 +1,4 @@
-﻿using Penguin.Cms.Security;
-using Penguin.Persistence.Abstractions.Attributes.Control;
+﻿using Penguin.Persistence.Abstractions.Attributes.Control;
 using System;
 using System.Collections.Generic;
 
@@ -10,8 +9,6 @@ namespace Penguin.Cms.Security.Static
     /// </summary>
     public partial class Users
     {
-        #region Properties
-
         /// <summary>
         /// A user representing anyone who is not currently logged in to the system
         /// </summary>
@@ -30,7 +27,5 @@ namespace Penguin.Cms.Security.Static
             },
             Guid = Guid.Empty
         };
-
-        #endregion Properties
     }
 }

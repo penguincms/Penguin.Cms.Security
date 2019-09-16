@@ -3,6 +3,7 @@ using Penguin.Persistence.Abstractions.Attributes.Control;
 using Penguin.Reflection.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
 
@@ -11,10 +12,8 @@ namespace Penguin.Cms.Security
     /// <summary>
     /// A data wrapper for custom user information attached to a used object
     /// </summary>
-    public partial class Profile : UserAuditableEntity
+    public partial class UserProfile : UserAuditableEntity
     {
-        #region Properties
-
         /// <summary>
         /// Contains a list of key value pair style objects with additional information for users
         /// </summary>
@@ -25,10 +24,6 @@ namespace Penguin.Cms.Security
         /// The user that this profile object applies to
         /// </summary>
         public User User { get; set; }
-
-        #endregion Properties
-
-        #region Methods
 
         /// <summary>
         /// Deserializes a concrete representation of a user profile from the fields attached to this object
@@ -58,6 +53,8 @@ namespace Penguin.Cms.Security
         /// <param name="data">The object to use as the data source from the fields</param>
         public void SetData(object data)
         {
+            Contract.Requires(data != null);
+
             foreach (PropertyInfo propertyInfo in data.GetType().GetProperties())
             {
                 string Name = propertyInfo.Name;
@@ -75,7 +72,5 @@ namespace Penguin.Cms.Security
                 }
             }
         }
-
-        #endregion Methods
     }
 }

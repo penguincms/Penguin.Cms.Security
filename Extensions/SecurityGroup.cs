@@ -2,15 +2,15 @@
 using Penguin.Entities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 
 namespace Penguin.Cms.Security.Extensions
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
     public static class SecurityGroupExtensions
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
-        #region Methods
-
         /// <summary>
         /// Returns a list of Guids representing the user themselves, all groups, and all roles (inc recursive)
         /// </summary>
@@ -18,6 +18,8 @@ namespace Penguin.Cms.Security.Extensions
         /// <returns>A list of Guids representing the user themselves, all groups, and all roles (inc recursive)</returns>
         public static IEnumerable<Guid> SecurityGroupGuids(this Security.User target)
         {
+            Contract.Requires(target != null);
+
             yield return target.Guid;
 
             foreach (Guid g in GetGroupGuids(target))
@@ -38,6 +40,8 @@ namespace Penguin.Cms.Security.Extensions
         /// <returns>A list of security groups for the user containing themselves, all groups, and all roles (inc recursive)</returns>
         public static IEnumerable<Security.SecurityGroup> SecurityGroups(this Security.User target)
         {
+            Contract.Requires(target != null);
+
             yield return target as Security.SecurityGroup;
 
             foreach (Security.SecurityGroup g in GetGroups(target))
@@ -58,9 +62,11 @@ namespace Penguin.Cms.Security.Extensions
         /// <returns>A list of security group guids for the user containing all groups, and all roles (inc recursive)</returns>
         public static IEnumerable<Guid> SecurityGroups(this IHasGroupsAndRoles target)
         {
-            if (!((target as Entity) is null))
+            Contract.Requires(target != null);
+
+            if (target is Entity te)
             {
-                yield return (target as Entity).Guid;
+                yield return te.Guid;
             }
 
             foreach (Guid g in GetGroupGuids(target))
@@ -81,9 +87,11 @@ namespace Penguin.Cms.Security.Extensions
         /// <returns>A list of Guids representing ONLY the groups (not roles) that an object belongs to</returns>
         public static IEnumerable<Guid> SecurityGroups(this IHasGroups target)
         {
-            if (!((target as Entity) is null))
+            Contract.Requires(target != null);
+
+            if (target is Entity te)
             {
-                yield return (target as Entity).Guid;
+                yield return te.Guid;
             }
 
             foreach (Guid g in GetGroupGuids(target))
@@ -99,9 +107,11 @@ namespace Penguin.Cms.Security.Extensions
         /// <returns>A list of Guids representing ONLY the roles (not groups) that an object belongs to</returns>
         public static IEnumerable<Guid> SecurityGroups(this IHasRoles target)
         {
-            if (!((target as Entity) is null))
+            Contract.Requires(target != null);
+
+            if (target is Entity te)
             {
-                yield return (target as Entity).Guid;
+                yield return te.Guid;
             }
 
             foreach (Guid g in GetRoleGuids(target))
@@ -127,7 +137,6 @@ namespace Penguin.Cms.Security.Extensions
                 }
             }
         }
-
 
         /// <summary>
         /// Returns a list of security groups including groups AND roles that an object belongs to
@@ -162,7 +171,5 @@ namespace Penguin.Cms.Security.Extensions
                 yield return r;
             }
         }
-
-        #endregion Methods
     }
 }

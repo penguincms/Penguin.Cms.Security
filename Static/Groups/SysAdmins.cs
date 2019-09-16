@@ -1,14 +1,11 @@
-﻿using Penguin.Cms.Security;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Penguin.Cms.Security.Static
 {
     public partial class Groups
     {
-        #region Properties
-
         /// <summary>
-        /// The highest level of permissions in any system. Should allow access to anything. 
+        /// The highest level of permissions in any system. Should allow access to anything.
         /// </summary>
         public static Group SysAdmins => new Group()
         {
@@ -24,7 +21,5 @@ namespace Penguin.Cms.Security.Static
                         Roles.UserManager
                     }
         };
-
-        #endregion Properties
     }
 }

@@ -7,7 +7,6 @@ namespace Penguin.Cms.Security
     /// </summary>
     public partial class ProfileData : KeyedObject
     {
-        #region Properties
         /// <summary>
         /// The name of the field
         /// </summary>
@@ -17,7 +16,5 @@ namespace Penguin.Cms.Security
         /// The value of the field
         /// </summary>
         public string Value { get; set; }
-
-        #endregion Properties
     }
 }

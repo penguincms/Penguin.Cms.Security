@@ -1,5 +1,4 @@
-﻿using Penguin.Cms.Security;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Penguin.Cms.Security.Static
 {
@@ -8,8 +7,6 @@ namespace Penguin.Cms.Security.Static
     /// </summary>
     public partial class Users
     {
-        #region Properties
-
         /// <summary>
         /// The default system administrator log in for the system
         /// </summary>
@@ -22,7 +19,5 @@ namespace Penguin.Cms.Security.Static
                         Groups.SysAdmins
                     }
         };
-
-        #endregion Properties
     }
 }

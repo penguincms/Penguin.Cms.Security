@@ -1,11 +1,7 @@
-﻿using Penguin.Cms.Security;
-
-namespace Penguin.Cms.Security.Static
+﻿namespace Penguin.Cms.Security.Static
 {
     public partial class Roles
     {
-        #region Properties
-
         /// <summary>
         /// The user should be allowed to produce content in the CMS, pages, navigation menus, etc
         /// </summary>
@@ -14,7 +10,5 @@ namespace Penguin.Cms.Security.Static
             Name = Names.ContentManager,
             Description = Descriptions.ContentManager
         };
-
-        #endregion Properties
     }
 }

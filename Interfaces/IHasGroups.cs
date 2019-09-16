@@ -7,12 +7,9 @@ namespace Penguin.Cms.Security.Interfaces
     /// </summary>
     public interface IHasGroups
     {
-        #region Properties
         /// <summary>
         /// A list of groups that the object belongs to
         /// </summary>
         List<Group> Groups { get; set; }
-
-        #endregion Properties
     }
 }
