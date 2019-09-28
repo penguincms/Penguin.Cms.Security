@@ -1,44 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/penguincms/Penguin.Cms.Security</PackageProjectUrl>
-    <PackageIconUrl>http://www.penguinms.com/client/images/pg.png</PackageIconUrl>
     <Description>Contains permissions centric classes for managing users/groups/roles in home-grown authentication systems as well as providing shared classes for permissionable entities to allow for access control</Description>
-    <Version>2.0.0</Version>
-	<IncludeSymbols>true</IncludeSymbols>    
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Version>2.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Penguin.Cms.Attributes" Version="2.0.0" />
     <PackageReference Include="Penguin.Cms.Entities" Version="2.0.0" />
-    <PackageReference Include="Penguin.Entities" Version="2.0.0" />
+    <PackageReference Include="Penguin.Entities" Version="2.0.1" />
     <PackageReference Include="Penguin.Extensions.String" Version="3.0.0" />
-    <PackageReference Include="Penguin.Persistence.Abstractions" Version="2.0.1" />
-    <PackageReference Include="Penguin.Reflection" Version="4.0.0" />
-    <PackageReference Include="Penguin.Reflection.Extensions" Version="3.0.0" />
+    <PackageReference Include="Penguin.Persistence.Abstractions" Version="2.1.5" />
+    <PackageReference Include="Penguin.Reflection" Version="4.0.2" />
+    <PackageReference Include="Penguin.Reflection.Extensions" Version="3.0.2" />
   </ItemGroup>
-
- <ItemGroup>
-    <None Include="License.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <WarningsAsErrors>NU1605, CS1591</WarningsAsErrors>
-    <DocumentationFile>Penguin.Cms.Security.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>full</DebugType>
-    <DocumentationFile>Penguin.Cms.Security.xml</DocumentationFile>
-  </PropertyGroup>
 </Project>
