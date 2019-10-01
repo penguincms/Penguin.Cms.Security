@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageProjectUrl>https://github.com/penguincms/Penguin.Cms.Security</PackageProjectUrl>
     <Description>Contains permissions centric classes for managing users/groups/roles in home-grown authentication systems as well as providing shared classes for permissionable entities to allow for access control</Description>
-    <Version>3.0.6</Version>
+    <Version>3.1.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Static\**" />
@@ -21,6 +21,6 @@
     <PackageReference Include="Penguin.Persistence.Abstractions" Version="2.1.5" />
     <PackageReference Include="Penguin.Reflection" Version="4.0.3" />
     <PackageReference Include="Penguin.Reflection.Extensions" Version="3.0.2" />
-    <PackageReference Include="Penguin.Security.Abstractions" Version="1.0.3" />
+    <PackageReference Include="Penguin.Security.Abstractions" Version="1.1.1" />
   </ItemGroup>
 </Project>

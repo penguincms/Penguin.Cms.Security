@@ -12,7 +12,7 @@ namespace Penguin.Cms.Security
     /// <summary>
     /// Represents a collection of identifying information and security properties to allow a single person to be tracked and permissioned within a system
     /// </summary>
-    public partial class User : SecurityGroup, IUser
+    public partial class User : SecurityGroup, IUser<Group, Role>, IUser
     {
         /// <summary>
         /// A contact email for the user
@@ -85,8 +85,14 @@ namespace Penguin.Cms.Security
         [DontAllow(DisplayContexts.List)]
         [CustomRoute(DisplayContexts.Edit, "Edit", "SecurityGroupSelector", "Admin")]
         public List<Role> Roles { get; set; } = new List<Role>();
-        IEnumerable<IGroup> IHasGroups.Groups => this.Groups.Cast<IGroup>();
 
-        IEnumerable<IRole> IHasRoles.Roles => this.Roles.Cast<IRole>();
+        IReadOnlyList<Group> IHasGroups<Group>.Groups => this.Groups;
+
+        IReadOnlyList<IGroup> IHasGroups<IGroup>.Groups => this.Groups;
+
+        IReadOnlyList<Role> IHasRoles<Role>.Roles => this.Roles;
+
+        IReadOnlyList<IRole> IHasRoles<IRole>.Roles => this.Roles;
+
     }
 }
