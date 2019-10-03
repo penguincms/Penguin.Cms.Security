@@ -11,7 +11,7 @@ namespace Penguin.Cms.Security
     /// Represents a collection of roles used to assign permissions
     /// </summary>
     [Table("Groups")]
-    public class Group : GroupRole, IGroup<IRole>, IGroup
+    public class Group : GroupRole, IGroup
     {
         /// <summary>
         /// The roles granted to members of this group
@@ -28,8 +28,8 @@ namespace Penguin.Cms.Security
         [DontAllow(DisplayContexts.Any)]
         [EagerLoad(1)]
         public virtual IList<User> Users { get; set; }
-        IReadOnlyList<IRole> IHasRoles<IRole>.Roles => Roles;
 
+        IReadOnlyList<IRole> IHasRoles.Roles => this.Roles;
 
         /// <summary>
         /// Creates a new instance of a group and initializes the role list

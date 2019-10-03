@@ -14,7 +14,7 @@ namespace Penguin.Cms.Security
     /// <summary>
     /// The base class for any entity that should require permissions based access
     /// </summary>
-    public abstract class PermissionableEntity : UserAuditableEntity, IPermissionableEntity<SecurityGroupPermission, SecurityGroup>
+    public abstract class PermissionableEntity : UserAuditableEntity, IPermissionableEntity
     {
         private const string NullSecurityGroupMessage = "Can not assign access to null security group";
 
@@ -44,7 +44,8 @@ namespace Penguin.Cms.Security
         [EagerLoad(2)]
         [Display(GroupName = "table")]
         public List<SecurityGroupPermission> Permissions { get; set; }
-        IReadOnlyList<SecurityGroupPermission> IPermissionableEntity<SecurityGroupPermission, SecurityGroup>.Permissions => this.Permissions;
+
+        IReadOnlyList<ISecurityGroupPermission> IPermissionableEntity.Permissions => this.Permissions;
 
         /// <summary>
         /// Constructs a new instance of a permissionable entity and initializes the permissions list

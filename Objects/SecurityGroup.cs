@@ -1,6 +1,7 @@
 ﻿using Penguin.Cms.Entities;
 using Penguin.Entities;
 using Penguin.Persistence.Abstractions.Attributes.Control;
+using Penguin.Persistence.Abstractions.Attributes.Rendering;
 using Penguin.Security.Abstractions.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,11 @@ namespace Penguin.Cms.Security
         /// </summary>
         public SecurityGroupSource Source { get; set; }
 
+        /// <summary>
+        /// What describes the use of this object?
+        /// </summary>
+        [Display(Order = -900)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Represents the a list of options for the source of this security group

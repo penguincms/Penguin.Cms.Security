@@ -11,7 +11,7 @@ namespace Penguin.Cms.Security
     /// <summary>
     /// Represents a set of permissions to define a security groups access to any permissionable entity
     /// </summary>
-    public class SecurityGroupPermission : KeyedObject, ISecurityGroupPermission<SecurityGroup>
+    public class SecurityGroupPermission : KeyedObject, ISecurityGroupPermission
     {
         /// <summary>
         /// The security group that this permission applies to
@@ -23,6 +23,8 @@ namespace Penguin.Cms.Security
         /// Defines the type of access that the security group has to the permissionable entity
         /// </summary>
         public PermissionTypes Type { get; set; }
+
+        ISecurityGroup ISecurityGroupPermission.SecurityGroup => this.SecurityGroup;
 
 
         /// <summary>

@@ -68,11 +68,6 @@
             Base class for assignable permissions objects
             </summary>
         </member>
-        <member name="P:Penguin.Cms.Security.GroupRole.Description">
-            <summary>
-            What describes the use of this object?
-            </summary>
-        </member>
         <member name="P:Penguin.Cms.Security.GroupRole.IsDefault">
             <summary>
             Should this permission be assigned to all new users?
@@ -211,6 +206,11 @@
         <member name="P:Penguin.Cms.Security.SecurityGroup.Source">
             <summary>
             The source for the security group when it was created
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.SecurityGroup.Description">
+            <summary>
+            What describes the use of this object?
             </summary>
         </member>
         <member name="T:Penguin.Cms.Security.SecurityGroup.SecurityGroupSource">

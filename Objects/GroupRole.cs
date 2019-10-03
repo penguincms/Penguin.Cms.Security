@@ -10,11 +10,7 @@ namespace Penguin.Cms.Security
     [Serializable]
     public abstract class GroupRole : SecurityGroup
     {
-        /// <summary>
-        /// What describes the use of this object?
-        /// </summary>
-        [Display(Order = -900)]
-        public string Description { get; set; }
+
 
         /// <summary>
         /// Should this permission be assigned to all new users?
