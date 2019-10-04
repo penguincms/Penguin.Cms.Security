@@ -36,7 +36,6 @@ namespace Penguin.Cms.Security
         [ManyToMany]
         [EagerLoad(2)]
         [DontAllow(DisplayContexts.List)]
-        [CustomRoute(DisplayContexts.Edit, "Edit", "SecurityGroupSelector", "Admin")]
         public List<Group> Groups { get; set; } = new List<Group>();
 
         /// <summary>
@@ -83,7 +82,6 @@ namespace Penguin.Cms.Security
         [ManyToMany]
         [EagerLoad(1)]
         [DontAllow(DisplayContexts.List)]
-        [CustomRoute(DisplayContexts.Edit, "Edit", "SecurityGroupSelector", "Admin")]
         public List<Role> Roles { get; set; } = new List<Role>();
 
         IReadOnlyList<IGroup> IHasGroups.Groups => this.Groups;

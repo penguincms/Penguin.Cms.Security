@@ -19,7 +19,6 @@ namespace Penguin.Cms.Security
         [ManyToMany]
         [EagerLoad(1)]
         [CustomRoute(DisplayContexts.List, "Render", "AsCSV")]
-        [CustomRoute(DisplayContexts.Edit, "Edit", "SecurityGroupSelector", "Admin")]
         public List<Role> Roles { get; set; }
 
         /// <summary>
