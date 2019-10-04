@@ -14,7 +14,7 @@ namespace Penguin.Cms.Security
     /// The most shared class for any object that can be given access to another object, including Roles, Groups, and Users
     /// </summary>
     [Serializable]
-    public class SecurityGroup : UserAuditableEntity, ISecurityGroup // This class cant be abstract because the model binder cant create an instance when posting json
+    public class SecurityGroup : Entity, ISecurityGroup // This class cant be abstract because the model binder cant create an instance when posting json
     {
         /// <summary>
         /// The GUID for the group. Used for allowing access without needing to reference a specific instance of the object

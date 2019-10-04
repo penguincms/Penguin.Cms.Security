@@ -1,22 +1,30 @@
-﻿using Penguin.Cms.Entities;
-using Penguin.Cms.Security.Extensions;
+﻿using Penguin.Entities;
 using Penguin.Persistence.Abstractions.Attributes.Control;
+using Penguin.Persistence.Abstractions.Attributes.Relations;
 using Penguin.Persistence.Abstractions.Attributes.Rendering;
+using Penguin.Persistence.Abstractions.Attributes.Validation;
+using Penguin.Persistence.Abstractions.Models.Base;
 using Penguin.Security.Abstractions;
 using Penguin.Security.Abstractions.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Text;
 
-namespace Penguin.Cms.Security
+namespace Penguin.Cms.Security.Objects
 {
     /// <summary>
-    /// The base class for any entity that should require permissions based access
+    /// An object that tracks permissions for entities
     /// </summary>
-    public abstract class PermissionableEntity : UserAuditableEntity, IPermissionableEntity
+    public class EntityPermissions : Entity, IEntityPermissions
     {
-        private const string NullSecurityGroupMessage = "Can not assign access to null security group";
+        /// <summary>
+        /// The Guid for the entity being referenced
+        /// </summary>
+        public Guid EntityGuid { get; set; }
+
+        private const string NULL_SECURITY_GROUP_MESSAGE = "Can not assign access to null security group";
 
         /// <summary>
         /// Setting this object adds the defined permissions to the underlying collection.
@@ -44,13 +52,13 @@ namespace Penguin.Cms.Security
         [EagerLoad(2)]
         [Display(GroupName = "table")]
         public List<SecurityGroupPermission> Permissions { get; set; }
+        IReadOnlyList<ISecurityGroupPermission> IEntityPermissions.Permissions => this.Permissions;
 
-        IReadOnlyList<ISecurityGroupPermission> IPermissionableEntity.Permissions => this.Permissions;
 
         /// <summary>
         /// Constructs a new instance of a permissionable entity and initializes the permissions list
         /// </summary>
-        public PermissionableEntity()
+        public EntityPermissions()
         {
             Permissions = new List<SecurityGroupPermission>();
         }
@@ -64,7 +72,7 @@ namespace Penguin.Cms.Security
         {
             if (securityGroup is null)
             {
-                throw new ArgumentNullException(nameof(securityGroup), NullSecurityGroupMessage);
+                throw new ArgumentNullException(nameof(securityGroup), NULL_SECURITY_GROUP_MESSAGE);
             }
 
             SecurityGroupPermission existing = this.Permissions.SingleOrDefault(p => p.SecurityGroup == securityGroup);

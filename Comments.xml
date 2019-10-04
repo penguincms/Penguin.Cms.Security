@@ -43,6 +43,62 @@
             </summary>
             <returns>An IEnumerable of default security users, groups, and roles</returns>
         </member>
+        <member name="T:Penguin.Cms.Security.Objects.EntityPermissions">
+            <summary>
+            An object that tracks permissions for entities
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Objects.EntityPermissions.EntityGuid">
+            <summary>
+            The Guid for the entity being referenced
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Objects.EntityPermissions.AddPermissions">
+            <summary>
+            Setting this object adds the defined permissions to the underlying collection.
+            This exists to allow for inline-defining new object permissions without needing to worry
+            about blowing away existing permissions if the object already exists
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Objects.EntityPermissions.Permissions">
+            <summary>
+            A list of permission definitions applied to this object
+            </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.Objects.EntityPermissions.#ctor">
+            <summary>
+            Constructs a new instance of a permissionable entity and initializes the permissions list
+            </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.Objects.EntityPermissions.AddPermission(Penguin.Cms.Security.SecurityGroup,Penguin.Security.Abstractions.PermissionTypes)">
+            <summary>
+            Adds a new access type for a given security group
+            </summary>
+            <param name="securityGroup">The security group to give access to</param>
+            <param name="permission">The type of access to allow</param>
+        </member>
+        <member name="M:Penguin.Cms.Security.Objects.EntityPermissions.ShouldSerializePermissions">
+            <summary>
+            When using newtonsoft, this ensures that entity permissions are not passed over with the entity if its serialized
+            This would be a security vulnerability since user/group information might be passed forward
+            </summary>
+            <returns>False</returns>
+        </member>
+        <member name="T:Penguin.Cms.Security.Objects.NameDescriptionPair">
+            <summary>
+            A struct containing both a name and description for a security object
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Objects.NameDescriptionPair.Description">
+            <summary>
+            A description of the object
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.Objects.NameDescriptionPair.Name">
+            <summary>
+            The name of the security object
+            </summary>
+        </member>
         <member name="T:Penguin.Cms.Security.Group">
             <summary>
             Represents a collection of roles used to assign permissions
@@ -83,57 +139,6 @@
             Returns the Name/ExternalId
             </summary>
             <returns>The Name/ExternalId</returns>
-        </member>
-        <member name="T:Penguin.Cms.Security.Objects.NameDescriptionPair">
-            <summary>
-            A struct containing both a name and description for a security object
-            </summary>
-        </member>
-        <member name="P:Penguin.Cms.Security.Objects.NameDescriptionPair.Description">
-            <summary>
-            A description of the object
-            </summary>
-        </member>
-        <member name="P:Penguin.Cms.Security.Objects.NameDescriptionPair.Name">
-            <summary>
-            The name of the security object
-            </summary>
-        </member>
-        <member name="T:Penguin.Cms.Security.PermissionableEntity">
-            <summary>
-            The base class for any entity that should require permissions based access
-            </summary>
-        </member>
-        <member name="P:Penguin.Cms.Security.PermissionableEntity.AddPermissions">
-            <summary>
-            Setting this object adds the defined permissions to the underlying collection.
-            This exists to allow for inline-defining new object permissions without needing to worry
-            about blowing away existing permissions if the object already exists
-            </summary>
-        </member>
-        <member name="P:Penguin.Cms.Security.PermissionableEntity.Permissions">
-            <summary>
-            A list of permission definitions applied to this object
-            </summary>
-        </member>
-        <member name="M:Penguin.Cms.Security.PermissionableEntity.#ctor">
-            <summary>
-            Constructs a new instance of a permissionable entity and initializes the permissions list
-            </summary>
-        </member>
-        <member name="M:Penguin.Cms.Security.PermissionableEntity.AddPermission(Penguin.Cms.Security.SecurityGroup,Penguin.Security.Abstractions.PermissionTypes)">
-            <summary>
-            Adds a new access type for a given security group
-            </summary>
-            <param name="securityGroup">The security group to give access to</param>
-            <param name="permission">The type of access to allow</param>
-        </member>
-        <member name="M:Penguin.Cms.Security.PermissionableEntity.ShouldSerializePermissions">
-            <summary>
-            When using newtonsoft, this ensures that entity permissions are not passed over with the entity if its serialized
-            This would be a security vulnerability since user/group information might be passed forward
-            </summary>
-            <returns>False</returns>
         </member>
         <member name="T:Penguin.Cms.Security.UserProfile">
             <summary>
