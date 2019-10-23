@@ -1,7 +1,7 @@
-﻿using Penguin.Cms.Security.Strings;
+﻿using Penguin.Cms.Security.Constants.Strings;
 using Penguin.Security.Abstractions.Constants;
 
-namespace Penguin.Cms.Security
+namespace Penguin.Cms.Security.Constants
 {
     /// <summary>
     /// Used to access typed instances of system roles

@@ -1,5 +1,4 @@
 ﻿using Penguin.Security.Abstractions.Extensions;
-using Penguin.Security.Abstractions.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -85,6 +84,5 @@ namespace Penguin.Cms.Security.Extensions
                 target.Groups.Remove(target.Groups.First(g => string.Equals(thisGroup.Name, g.ExternalId, StringComparison.InvariantCultureIgnoreCase)));
             }
         }
-
     }
 }

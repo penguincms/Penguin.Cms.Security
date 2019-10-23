@@ -12,7 +12,7 @@ namespace Penguin.Cms.Security
     /// <summary>
     /// A data wrapper for custom user information attached to a used object
     /// </summary>
-    public partial class UserProfile : UserAuditableEntity
+    public partial class UserProfile : AuditableEntity
     {
         /// <summary>
         /// Contains a list of key value pair style objects with additional information for users

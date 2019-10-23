@@ -1,4 +1,4 @@
-﻿using Penguin.Persistence.Abstractions.Models.Base;
+﻿using Penguin.Persistence.Abstractions;
 
 namespace Penguin.Cms.Security
 {

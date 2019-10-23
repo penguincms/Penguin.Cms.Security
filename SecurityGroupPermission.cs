@@ -1,13 +1,10 @@
-﻿using Penguin.Persistence.Abstractions.Attributes.Control;
-using Penguin.Persistence.Abstractions.Models.Base;
+﻿using Penguin.Persistence.Abstractions;
+using Penguin.Persistence.Abstractions.Attributes.Control;
 using Penguin.Security.Abstractions;
 using Penguin.Security.Abstractions.Interfaces;
-using System;
 
 namespace Penguin.Cms.Security
 {
-
-
     /// <summary>
     /// Represents a set of permissions to define a security groups access to any permissionable entity
     /// </summary>
@@ -19,13 +16,12 @@ namespace Penguin.Cms.Security
         [EagerLoad(1)]
         public SecurityGroup SecurityGroup { get; set; }
 
+        ISecurityGroup ISecurityGroupPermission.SecurityGroup => this.SecurityGroup;
+
         /// <summary>
         /// Defines the type of access that the security group has to the permissionable entity
         /// </summary>
         public PermissionTypes Type { get; set; }
-
-        ISecurityGroup ISecurityGroupPermission.SecurityGroup => this.SecurityGroup;
-
 
         /// <summary>
         /// Constructs a new instance of this class for the specified security group, using the specified access type

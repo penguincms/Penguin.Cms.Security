@@ -1,11 +1,9 @@
-﻿using Penguin.Cms.Attributes;
-using Penguin.Extensions.Strings.Security;
+﻿using Penguin.Extensions.Strings.Security;
 using Penguin.Persistence.Abstractions.Attributes.Control;
 using Penguin.Persistence.Abstractions.Attributes.Relations;
 using Penguin.Persistence.Abstractions.Attributes.Validation;
 using Penguin.Security.Abstractions.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Penguin.Cms.Security
 {
@@ -38,6 +36,8 @@ namespace Penguin.Cms.Security
         [DontAllow(DisplayContexts.List)]
         public List<Group> Groups { get; set; } = new List<Group>();
 
+        IReadOnlyList<IGroup> IHasGroups.Groups => this.Groups;
+
         /// <summary>
         /// The post-hash password. Setting this will not alter the password in any way
         /// </summary>
@@ -66,7 +66,6 @@ namespace Penguin.Cms.Security
         /// </summary>
         [NotMapped]
         [DontAllow(DisplayContexts.List)]
-        [CustomRoute(DisplayContexts.Edit, "User", "ResetPasswordButton", "Admin")]
         public string Password { get => this.HashedPassword; set => this.HashedPassword = value.ComputeSha512Hash(); }
 
         /// <summary>
@@ -83,8 +82,6 @@ namespace Penguin.Cms.Security
         [EagerLoad(1)]
         [DontAllow(DisplayContexts.List)]
         public List<Role> Roles { get; set; } = new List<Role>();
-
-        IReadOnlyList<IGroup> IHasGroups.Groups => this.Groups;
 
         IReadOnlyList<IRole> IHasRoles.Roles => this.Roles;
     }

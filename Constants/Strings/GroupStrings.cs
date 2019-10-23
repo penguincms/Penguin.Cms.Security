@@ -1,9 +1,6 @@
-﻿using Penguin.Cms.Security.Objects;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Penguin.Security.Abstractions;
 
-namespace Penguin.Cms.Security.Strings
+namespace Penguin.Cms.Security.Constants.Strings
 {
     /// <summary>
     /// Contains static variables for generating and referencing Groups

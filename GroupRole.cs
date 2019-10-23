@@ -10,8 +10,6 @@ namespace Penguin.Cms.Security
     [Serializable]
     public abstract class GroupRole : SecurityGroup
     {
-
-
         /// <summary>
         /// Should this permission be assigned to all new users?
         /// </summary>

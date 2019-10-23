@@ -4,7 +4,6 @@ using Penguin.Persistence.Abstractions.Attributes.Control;
 using Penguin.Persistence.Abstractions.Attributes.Rendering;
 using Penguin.Security.Abstractions.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -16,6 +15,33 @@ namespace Penguin.Cms.Security
     [Serializable]
     public class SecurityGroup : Entity, ISecurityGroup // This class cant be abstract because the model binder cant create an instance when posting json
     {
+        /// <summary>
+        /// Represents the a list of options for the source of this security group
+        /// </summary>
+        public enum SecurityGroupSource
+        {
+            /// <summary>
+            /// The group was created by the system as part of its core functionality
+            /// </summary>
+            System,
+
+            /// <summary>
+            /// The group was created by the client to extend functionality
+            /// </summary>
+            Client,
+
+            /// <summary>
+            /// The group was automatically pulled from Active Directory
+            /// </summary>
+            ActiveDirectory
+        }
+
+        /// <summary>
+        /// What describes the use of this object?
+        /// </summary>
+        [Display(Order = -900)]
+        public string Description { get; set; }
+
         /// <summary>
         /// The GUID for the group. Used for allowing access without needing to reference a specific instance of the object
         /// </summary>
@@ -55,33 +81,6 @@ namespace Penguin.Cms.Security
         /// The source for the security group when it was created
         /// </summary>
         public SecurityGroupSource Source { get; set; }
-
-        /// <summary>
-        /// What describes the use of this object?
-        /// </summary>
-        [Display(Order = -900)]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Represents the a list of options for the source of this security group
-        /// </summary>
-        public enum SecurityGroupSource
-        {
-            /// <summary>
-            /// The group was created by the system as part of its core functionality
-            /// </summary>
-            System,
-
-            /// <summary>
-            /// The group was created by the client to extend functionality
-            /// </summary>
-            Client,
-
-            /// <summary>
-            /// The group was automatically pulled from Active Directory
-            /// </summary>
-            ActiveDirectory
-        }
 
         /// <summary>
         /// Compares based on the type and the ExternalId

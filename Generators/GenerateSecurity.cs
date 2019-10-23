@@ -1,8 +1,6 @@
-﻿using Penguin.Cms.Core.Interfaces;
-using Penguin.Cms.Core.Objects;
-using System;
+﻿using Penguin.Cms.Abstractions;
+using Penguin.Cms.Security.Constants;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Penguin.Cms.Security.Generators
 {

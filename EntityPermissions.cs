@@ -1,30 +1,22 @@
-﻿using Penguin.Entities;
+﻿using Penguin.Cms.Entities;
 using Penguin.Persistence.Abstractions.Attributes.Control;
-using Penguin.Persistence.Abstractions.Attributes.Relations;
 using Penguin.Persistence.Abstractions.Attributes.Rendering;
-using Penguin.Persistence.Abstractions.Attributes.Validation;
-using Penguin.Persistence.Abstractions.Models.Base;
 using Penguin.Security.Abstractions;
 using Penguin.Security.Abstractions.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
-using System.Text;
 
-namespace Penguin.Cms.Security.Objects
+namespace Penguin.Cms.Security
 {
     /// <summary>
     /// An object that tracks permissions for entities
     /// </summary>
     public class EntityPermissions : Entity, IEntityPermissions
     {
-        /// <summary>
-        /// The Guid for the entity being referenced
-        /// </summary>
-        public Guid EntityGuid { get; set; }
-
-        private const string NULL_SECURITY_GROUP_MESSAGE = "Can not assign access to null security group";
+        [DontAllow(DisplayContexts.Any)]
+        public override int _Id { get { return base._Id; } set { base._Id = value; } }
 
         /// <summary>
         /// Setting this object adds the defined permissions to the underlying collection.
@@ -47,13 +39,19 @@ namespace Penguin.Cms.Security.Objects
         }
 
         /// <summary>
+        /// The Guid for the entity being referenced
+        /// </summary>
+        public Guid EntityGuid { get; set; }
+
+        /// <summary>
         /// A list of permission definitions applied to this object
         /// </summary>
         [EagerLoad(2)]
         [Display(GroupName = "table")]
         public List<SecurityGroupPermission> Permissions { get; set; }
-        IReadOnlyList<ISecurityGroupPermission> IEntityPermissions.Permissions => this.Permissions;
 
+        IReadOnlyList<ISecurityGroupPermission> IEntityPermissions.Permissions => this.Permissions;
+        private const string NULL_SECURITY_GROUP_MESSAGE = "Can not assign access to null security group";
 
         /// <summary>
         /// Constructs a new instance of a permissionable entity and initializes the permissions list
@@ -86,8 +84,6 @@ namespace Penguin.Cms.Security.Objects
                 existing.Type |= permission;
             }
         }
-
-
 
         /// <summary>
         /// When using newtonsoft, this ensures that entity permissions are not passed over with the entity if its serialized
