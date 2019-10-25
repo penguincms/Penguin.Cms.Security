@@ -1,5 +1,7 @@
 Penguin.Cms.InternalMessaging.Repositories
+Penguin.Cms.Modules.InternalMessaging
 Penguin.Cms.Security.Repositories
+Penguin.Cms.Modules.Security
 Penguin.Cms.Web.Security
 Penguin.Cms.Web.Security.Repositories
 Penguin.Cms.Web.Security.Services
