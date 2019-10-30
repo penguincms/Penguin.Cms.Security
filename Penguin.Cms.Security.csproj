@@ -12,12 +12,12 @@
     <Compile Remove="Static\**" />
     <EmbeddedResource Remove="Static\**" />
     <None Remove="Static\**" />
-    <PackageReference Include="Penguin.Cms.Abstractions" Version="1.0.1-T9M2XAX" />
-    <PackageReference Include="Penguin.Auditing.Abstractions" Version="1.0.1-T9M2XAX" />
-    <PackageReference Include="Penguin.Cms.Email.Abstractions" Version="1.0.1-T9M2XAX" />
-    <PackageReference Include="Penguin.Cms.Entities" Version="3.0.4-T9M2XAX" />
-    <PackageReference Include="Penguin.Email.Templating.Abstractions" Version="1.0.1-T9M2XAX" />
-    <PackageReference Include="Penguin.Security.Abstractions" Version="2.0.1-T9M2XAX" />
+    <PackageReference Include="Penguin.Cms.Abstractions" Version="1.0.1-T9M3AAF" />
+    <PackageReference Include="Penguin.Auditing.Abstractions" Version="1.0.1-T9M3AAF" />
+    <PackageReference Include="Penguin.Cms.Email.Abstractions" Version="1.0.1-T9M3AAF" />
+    <PackageReference Include="Penguin.Cms.Entities" Version="3.0.4-T9M3AAF" />
+    <PackageReference Include="Penguin.Email.Templating.Abstractions" Version="1.0.1-T9M3AAF" />
+    <PackageReference Include="Penguin.Security.Abstractions" Version="2.0.1-T9M3AAF" />
   </ItemGroup>
   <ItemGroup />
 </Project>
