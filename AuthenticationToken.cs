@@ -1,5 +1,4 @@
-﻿using Penguin.Auditing.Abstractions;
-using Penguin.Auditing.Abstractions.Attributes;
+﻿using Penguin.Auditing.Abstractions.Attributes;
 using Penguin.Cms.Entities;
 
 using System;

@@ -1,5 +1,4 @@
 ﻿using Penguin.Cms.Entities;
-using Penguin.Entities;
 using Penguin.Persistence.Abstractions.Attributes.Control;
 using Penguin.Persistence.Abstractions.Attributes.Rendering;
 using Penguin.Security.Abstractions.Interfaces;
@@ -15,27 +14,6 @@ namespace Penguin.Cms.Security
     [Serializable]
     public class SecurityGroup : Entity, ISecurityGroup // This class cant be abstract because the model binder cant create an instance when posting json
     {
-        /// <summary>
-        /// Represents the a list of options for the source of this security group
-        /// </summary>
-        public enum SecurityGroupSource
-        {
-            /// <summary>
-            /// The group was created by the system as part of its core functionality
-            /// </summary>
-            System,
-
-            /// <summary>
-            /// The group was created by the client to extend functionality
-            /// </summary>
-            Client,
-
-            /// <summary>
-            /// The group was automatically pulled from Active Directory
-            /// </summary>
-            ActiveDirectory
-        }
-
         /// <summary>
         /// What describes the use of this object?
         /// </summary>
@@ -71,16 +49,34 @@ namespace Penguin.Cms.Security
                     return base.Guid;
                 }
             }
-            set
-            {
-                base.Guid = value;
-            }
+            set => base.Guid = value;
         }
 
         /// <summary>
         /// The source for the security group when it was created
         /// </summary>
         public SecurityGroupSource Source { get; set; }
+
+        /// <summary>
+        /// Represents the a list of options for the source of this security group
+        /// </summary>
+        public enum SecurityGroupSource
+        {
+            /// <summary>
+            /// The group was created by the system as part of its core functionality
+            /// </summary>
+            System,
+
+            /// <summary>
+            /// The group was created by the client to extend functionality
+            /// </summary>
+            Client,
+
+            /// <summary>
+            /// The group was automatically pulled from Active Directory
+            /// </summary>
+            ActiveDirectory
+        }
 
         /// <summary>
         /// Compares based on the type and the ExternalId
@@ -147,12 +143,18 @@ namespace Penguin.Cms.Security
         /// Hashes the Type and the External ID
         /// </summary>
         /// <returns>Hashes the Type and the External ID</returns>
-        public override int GetHashCode() => this.TypeName.GetHashCode() + this.ExternalId.GetHashCode();
+        public override int GetHashCode()
+        {
+            return this.TypeName.GetHashCode() + this.ExternalId.GetHashCode();
+        }
 
         /// <summary>
         /// Returns the ExternalId
         /// </summary>
         /// <returns>The ExternalId</returns>
-        public override string ToString() => this.ExternalId;
+        public override string ToString()
+        {
+            return this.ExternalId;
+        }
     }
 }

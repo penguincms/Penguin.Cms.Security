@@ -15,8 +15,10 @@ namespace Penguin.Cms.Security
     /// </summary>
     public class EntityPermissions : Entity, IEntityPermissions
     {
+        private const string NULL_SECURITY_GROUP_MESSAGE = "Can not assign access to null security group";
+
         [DontAllow(DisplayContexts.Any)]
-        public override int _Id { get { return base._Id; } set { base._Id = value; } }
+        public override int _Id { get => base._Id; set => base._Id = value; }
 
         /// <summary>
         /// Setting this object adds the defined permissions to the underlying collection.
@@ -51,14 +53,13 @@ namespace Penguin.Cms.Security
         public List<SecurityGroupPermission> Permissions { get; set; }
 
         IReadOnlyList<ISecurityGroupPermission> IEntityPermissions.Permissions => this.Permissions;
-        private const string NULL_SECURITY_GROUP_MESSAGE = "Can not assign access to null security group";
 
         /// <summary>
         /// Constructs a new instance of a permissionable entity and initializes the permissions list
         /// </summary>
         public EntityPermissions()
         {
-            Permissions = new List<SecurityGroupPermission>();
+            this.Permissions = new List<SecurityGroupPermission>();
         }
 
         /// <summary>
@@ -90,6 +91,9 @@ namespace Penguin.Cms.Security
         /// This would be a security vulnerability since user/group information might be passed forward
         /// </summary>
         /// <returns>False</returns>
-        public bool ShouldSerializePermissions() => false;
+        public bool ShouldSerializePermissions()
+        {
+            return false;
+        }
     }
 }
