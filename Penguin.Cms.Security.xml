@@ -393,6 +393,21 @@
             The most shared class for any object that can be given access to another object, including Roles, Groups, and Users
             </summary>
         </member>
+        <member name="P:Penguin.Cms.Security.SecurityGroup.Description">
+            <summary>
+            What describes the use of this object?
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.SecurityGroup.Guid">
+            <summary>
+            The GUID for the group. Used for allowing access without needing to reference a specific instance of the object
+            </summary>
+        </member>
+        <member name="P:Penguin.Cms.Security.SecurityGroup.Source">
+            <summary>
+            The source for the security group when it was created
+            </summary>
+        </member>
         <member name="T:Penguin.Cms.Security.SecurityGroup.SecurityGroupSource">
             <summary>
             Represents the a list of options for the source of this security group
@@ -411,21 +426,6 @@
         <member name="F:Penguin.Cms.Security.SecurityGroup.SecurityGroupSource.ActiveDirectory">
             <summary>
             The group was automatically pulled from Active Directory
-            </summary>
-        </member>
-        <member name="P:Penguin.Cms.Security.SecurityGroup.Description">
-            <summary>
-            What describes the use of this object?
-            </summary>
-        </member>
-        <member name="P:Penguin.Cms.Security.SecurityGroup.Guid">
-            <summary>
-            The GUID for the group. Used for allowing access without needing to reference a specific instance of the object
-            </summary>
-        </member>
-        <member name="P:Penguin.Cms.Security.SecurityGroup.Source">
-            <summary>
-            The source for the security group when it was created
             </summary>
         </member>
         <member name="M:Penguin.Cms.Security.SecurityGroup.op_Inequality(Penguin.Cms.Security.SecurityGroup,Penguin.Cms.Security.SecurityGroup)">
