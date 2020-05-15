@@ -13,7 +13,7 @@ namespace Penguin.Cms.Security.Constants
         /// </summary>
         public static Role AdminAccess { get; } = new Role()
         {
-            Name = RoleNames.AdminAccess,
+            Name = RoleNames.ADMIN_ACCESS,
             Description = RoleStrings.AdminAccess.Description
         };
 
@@ -22,7 +22,7 @@ namespace Penguin.Cms.Security.Constants
         /// </summary>
         public static Role AllUsers { get; } = new Role()
         {
-            Name = RoleNames.AllUsers,
+            Name = RoleNames.ALL_USERS,
             Description = RoleStrings.AllUsers.Description
         };
 
@@ -31,7 +31,7 @@ namespace Penguin.Cms.Security.Constants
         /// </summary>
         public static Role Guest { get; } = new Role()
         {
-            Name = RoleNames.Guest,
+            Name = RoleNames.GUEST,
             Description = RoleStrings.Guest.Description
         };
 
@@ -40,7 +40,7 @@ namespace Penguin.Cms.Security.Constants
         /// </summary>
         public static Role LoggedIn { get; } = new Role()
         {
-            Name = RoleNames.LoggedIn,
+            Name = RoleNames.LOGGED_IN,
             Description = RoleStrings.LoggedIn.Description
         };
 
@@ -49,7 +49,7 @@ namespace Penguin.Cms.Security.Constants
         /// </summary>
         public static Role SysAdmin { get; } = new Role()
         {
-            Name = RoleNames.SysAdmin,
+            Name = RoleNames.SYS_ADMIN,
             Description = RoleStrings.SysAdmin.Description
         };
 
@@ -58,7 +58,7 @@ namespace Penguin.Cms.Security.Constants
         /// </summary>
         public static Role UserManager { get; } = new Role()
         {
-            Name = RoleNames.UserManager,
+            Name = RoleNames.USER_MANAGER,
             Description = RoleStrings.UserManager.Description
         };
     }
