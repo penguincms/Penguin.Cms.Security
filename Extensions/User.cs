@@ -18,8 +18,15 @@ namespace Penguin.Cms.Security.Extensions
         /// <param name="thisGroup">The group to add</param>
         public static void AddGroup(this User target, Group thisGroup)
         {
-            Contract.Requires(target != null);
-            Contract.Requires(thisGroup != null);
+            if (target is null)
+            {
+                throw new ArgumentNullException(nameof(target));
+            }
+
+            if (thisGroup is null)
+            {
+                throw new ArgumentNullException(nameof(thisGroup));
+            }
 
             target.Groups = target.Groups ?? new List<Group>();
 
@@ -36,8 +43,15 @@ namespace Penguin.Cms.Security.Extensions
         /// <param name="thisRole">The role to add</param>
         public static void AddRole(this User target, Role thisRole)
         {
-            Contract.Requires(target != null);
-            Contract.Requires(thisRole != null);
+            if (target is null)
+            {
+                throw new ArgumentNullException(nameof(target));
+            }
+
+            if (thisRole is null)
+            {
+                throw new ArgumentNullException(nameof(thisRole));
+            }
 
             target.Roles = target.Roles ?? new List<Role>();
 
@@ -54,8 +68,15 @@ namespace Penguin.Cms.Security.Extensions
         /// <param name="thisRole">The role to add</param>
         public static void AddRole(this Group target, Role thisRole)
         {
-            Contract.Requires(target != null);
-            Contract.Requires(thisRole != null);
+            if (target is null)
+            {
+                throw new ArgumentNullException(nameof(target));
+            }
+
+            if (thisRole is null)
+            {
+                throw new ArgumentNullException(nameof(thisRole));
+            }
 
             target.Roles = target.Roles ?? new List<Role>();
 
@@ -72,7 +93,15 @@ namespace Penguin.Cms.Security.Extensions
         /// <param name="thisGroup">The group to remove</param>
         public static void RemoveGroup(this User target, Group thisGroup)
         {
-            Contract.Requires(target != null);
+            if (thisGroup is null)
+            {
+                throw new ArgumentNullException(nameof(thisGroup));
+            }
+
+            if (target is null)
+            {
+                throw new ArgumentNullException(nameof(target));
+            }
 
             if (target.Groups is null)
             {

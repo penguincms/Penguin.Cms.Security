@@ -53,7 +53,10 @@ namespace Penguin.Cms.Security
         /// <param name="data">The object to use as the data source from the fields</param>
         public void SetData(object data)
         {
-            Contract.Requires(data != null);
+            if (data is null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
 
             foreach (PropertyInfo propertyInfo in data.GetType().GetProperties())
             {

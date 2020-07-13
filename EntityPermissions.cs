@@ -31,7 +31,10 @@ namespace Penguin.Cms.Security
         {
             set
             {
-                Contract.Requires(value != null);
+                if (value is null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
 
                 foreach (SecurityGroupPermission permission in value)
                 {

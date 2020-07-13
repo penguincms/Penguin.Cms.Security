@@ -9,6 +9,11 @@ namespace Penguin.Cms.Security.Extensions
     {
         public static T CreateIfNotExists<T>(this IRepository<T> repository, string Name, string Description, SecurityGroupSource source = SecurityGroupSource.System) where T : SecurityGroup, new()
         {
+            if (repository is null)
+            {
+                throw new System.ArgumentNullException(nameof(repository));
+            }
+
             T existingGroup = repository.FirstOrDefault(gr => gr.ExternalId == Name);
             if (existingGroup == null)
             {
