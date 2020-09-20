@@ -66,7 +66,7 @@ namespace Penguin.Cms.Security
         /// </summary>
         [NotMapped]
         [DontAllow(DisplayContexts.List)]
-        public string Password { get => this.HashedPassword; set => this.HashedPassword = value.ComputeSha512Hash(); }
+        public string Password { get => this.HashedPassword; set => this.HashedPassword = HashPassword(value); }
 
         /// <summary>
         /// A customizable collection of information not otherwise contained on this object
@@ -84,5 +84,15 @@ namespace Penguin.Cms.Security
         public List<Role> Roles { get; set; } = new List<Role>();
 
         IReadOnlyList<IRole> IHasRoles.Roles => this.Roles;
+
+        /// <summary>
+        /// The user password hashing function for use during authentication
+        /// </summary>
+        /// <param name="password">The password to hash</param>
+        /// <returns>The hashed password</returns>
+        public static string HashPassword(string password)
+        {
+            return password.ComputeSha512Hash();
+        }
     }
 }

@@ -56,6 +56,21 @@ namespace Penguin.Cms.Security.Services
         }
 
         /// <summary>
+        /// Gets a user using any valid authentication token
+        /// </summary>
+        /// <param name="token">The token to use to get the user</param>
+        /// <returns>A user if a the token is valid, otherwise null</returns>
+        public User GetByAuthenticationToken(Guid token)
+        {
+            if (this.AuthenticationTokenRepository.SingleOrDefault(t => t.Guid == token && t.Expiration > DateTime.Now) is AuthenticationToken matchedToken)
+            {
+                return this.UserRepository.Where(u => u.Guid == matchedToken.User).FirstOrDefault();
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Returns an authentication token that can be used to reset a password. If email templating is bundled, will send out a password reset email
         /// </summary>
         /// <param name="Login">The login for the user to request</param>

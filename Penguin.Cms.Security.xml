@@ -520,6 +520,13 @@
             <param name="token">The token to use to get the user</param>
             <returns>A user if a the token is valid, otherwise null</returns>
         </member>
+        <member name="M:Penguin.Cms.Security.Services.UserService.GetByAuthenticationToken(System.Guid)">
+            <summary>
+            Gets a user using any valid authentication token
+            </summary>
+            <param name="token">The token to use to get the user</param>
+            <returns>A user if a the token is valid, otherwise null</returns>
+        </member>
         <member name="M:Penguin.Cms.Security.Services.UserService.RequestPasswordReset(System.String)">
             <summary>
             Returns an authentication token that can be used to reset a password. If email templating is bundled, will send out a password reset email
@@ -606,6 +613,13 @@
             <summary>
             A list of roles directly assigned to the user to ensure access even through group changes
             </summary>
+        </member>
+        <member name="M:Penguin.Cms.Security.User.HashPassword(System.String)">
+            <summary>
+            The user password hashing function for use during authentication
+            </summary>
+            <param name="password">The password to hash</param>
+            <returns>The hashed password</returns>
         </member>
     </members>
 </doc>
