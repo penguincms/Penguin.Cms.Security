@@ -6,6 +6,6 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "<Pending>", Scope = "module")]
-[assembly: SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "<Pending>", Scope = "type", Target = "Penguin.Cms.Security.UserProfile")]
-[assembly: SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "<Pending>", Scope = "type", Target = "Penguin.Cms.Security.Role")]
-[assembly: SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "<Pending>", Scope = "type", Target = "Penguin.Cms.Security.EntityPermissions")]
+[assembly: SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "<Pending>", Scope = "type", Target = "~T:Penguin.Cms.Security.UserProfile")]
+[assembly: SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "<Pending>", Scope = "type", Target = "~T:Penguin.Cms.Security.Role")]
+[assembly: SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "<Pending>", Scope = "type", Target = "~T:Penguin.Cms.Security.EntityPermissions")]
