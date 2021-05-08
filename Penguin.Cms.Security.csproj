@@ -17,8 +17,8 @@
     <PackageReference Include="Penguin.Cms.Email.Abstractions" Version="5.0.4" />
     <PackageReference Include="Penguin.Email.Templating.Abstractions" Version="5.0.4" />
     <PackageReference Include="Penguin.Security.Abstractions" Version="5.0.4" />
-    <PackageReference Include="Penguin.Cms.Abstractions" Version="5.0.4" />
-    <PackageReference Include="Penguin.Cms.Entities" Version="5.0.4" />
+    <PackageReference Include="Penguin.Cms.Abstractions" Version="5.0.6-TAEO1KM" />
+    <PackageReference Include="Penguin.Cms.Entities" Version="5.0.6-TAEO1KM" />
   </ItemGroup>
   <ItemGroup />
 </Project>
