@@ -87,7 +87,7 @@ namespace Penguin.Cms.Security.Services
         /// <param name="Token">Parameter only used by email templating system</param>
         /// <returns>Returns an authentication token that can be used to reset a password.</returns>
         [EmailHandler("Request Password Reset")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Used by email templating system")]
         public AuthenticationToken RequestPasswordReset(User targetUser, Guid Token)
         {
             if (targetUser != null)

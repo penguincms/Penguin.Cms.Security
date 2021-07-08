@@ -2,7 +2,7 @@
   <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageProjectUrl>https://github.com/penguincms/Penguin.Cms.Security</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/PenguinCMS/Penguin.Cms.Security</PackageProjectUrl>
     <Description>Contains permissions centric classes for managing users/groups/roles in home-grown authentication systems as well as providing shared classes for permissionable entities to allow for access control</Description>
     <Version>5.0.5</Version>
     <AssemblyName>Penguin.Cms.Security</AssemblyName>

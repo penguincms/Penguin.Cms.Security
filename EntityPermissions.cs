@@ -25,7 +25,6 @@ namespace Penguin.Cms.Security
         /// about blowing away existing permissions if the object already exists
         /// </summary>
         [DontAllow(DisplayContexts.List)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1044:Properties should not be write only", Justification = "This is being used to simplify permissions creation during init")]
         public List<SecurityGroupPermission> AddPermissions
         {
             set
@@ -88,14 +87,13 @@ namespace Penguin.Cms.Security
             }
         }
 
+
         /// <summary>
         /// When using newtonsoft, this ensures that entity permissions are not passed over with the entity if its serialized
         /// This would be a security vulnerability since user/group information might be passed forward
         /// </summary>
         /// <returns>False</returns>
-        public bool ShouldSerializePermissions()
-        {
-            return false;
-        }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Used by Newtonsoft")]
+        public bool ShouldSerializePermissions() => false;
     }
 }
