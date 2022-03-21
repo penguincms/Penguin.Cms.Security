@@ -90,9 +90,6 @@ namespace Penguin.Cms.Security
         /// </summary>
         /// <param name="password">The password to hash</param>
         /// <returns>The hashed password</returns>
-        public static string HashPassword(string password)
-        {
-            return password.ComputeSha512Hash();
-        }
+        public static string HashPassword(string password) => password.ComputeSha512Hash();
     }
 }

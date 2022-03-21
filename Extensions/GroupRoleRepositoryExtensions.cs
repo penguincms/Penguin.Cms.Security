@@ -32,28 +32,19 @@ namespace Penguin.Cms.Security.Extensions
             return existingGroup;
         }
 
-        public static bool Exists<T>(this IRepository<T> repository, string name) where T : GroupRole
-        {
-            return repository.Where(r => r.ExternalId == name).Any();
-        }
+        public static bool Exists<T>(this IRepository<T> repository, string name) where T : GroupRole => repository.Where(r => r.ExternalId == name).Any();
 
         /// <summary>
         /// Gets a group or role by name
         /// </summary>
         /// <param name="Name">The name to check for</param>
         /// <returns>The group/role or null</returns>
-        public static T GetByName<T>(this IRepository<T> repository, string Name) where T : GroupRole
-        {
-            return repository.Where(t => t.ExternalId == Name).SingleOrDefault();
-        }
+        public static T GetByName<T>(this IRepository<T> repository, string Name) where T : GroupRole => repository.Where(t => t.ExternalId == Name).SingleOrDefault();
 
         /// <summary>
         /// Gets any groups/roles that are set to be assigned to all new users
         /// </summary>
         /// <returns>Any groups/roles that are set to be assigned to all new users</returns>
-        public static List<T> GetDefaults<T>(this IRepository<T> repository) where T : GroupRole
-        {
-            return repository.Where(gr => gr.IsDefault).ToList();
-        }
+        public static List<T> GetDefaults<T>(this IRepository<T> repository) where T : GroupRole => repository.Where(gr => gr.IsDefault).ToList();
     }
 }

@@ -10,9 +10,6 @@ namespace Penguin.Cms.Security.Extensions
         /// </summary>
         /// <param name="login">The login of the user that owns the profile</param>
         /// <returns>The users profile</returns>
-        public static UserProfile GetByLogin(this IRepository<UserProfile> repository, string login)
-        {
-            return repository.Where(u => u.User.ExternalId == login).FirstOrDefault();
-        }
+        public static UserProfile GetByLogin(this IRepository<UserProfile> repository, string login) => repository.Where(u => u.User.ExternalId == login).FirstOrDefault();
     }
 }

@@ -27,9 +27,6 @@ namespace Penguin.Cms.Security
         /// Returns the Name/ExternalId
         /// </summary>
         /// <returns>The Name/ExternalId</returns>
-        public override string ToString()
-        {
-            return this.Name;
-        }
+        public override string ToString() => this.Name;
     }
 }

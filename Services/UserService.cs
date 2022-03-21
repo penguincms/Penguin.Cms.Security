@@ -75,10 +75,7 @@ namespace Penguin.Cms.Security.Services
         /// </summary>
         /// <param name="Login">The login for the user to request</param>
         /// <returns>Returns an authentication token that can be used to reset a password.</returns>
-        public AuthenticationToken RequestPasswordReset(string Login)
-        {
-            return this.RequestPasswordReset(this.UserRepository.Find(Login), Guid.Empty);
-        }
+        public AuthenticationToken RequestPasswordReset(string Login) => this.RequestPasswordReset(this.UserRepository.Find(Login), Guid.Empty);
 
         /// <summary>
         /// Returns an authentication token that can be used to reset a password. If email templating is bundled, will send out a password reset email
@@ -133,10 +130,7 @@ namespace Penguin.Cms.Security.Services
         /// If email templating is enabled, Sends the specified email a message containing the login name of any associated user account
         /// </summary>
         /// <param name="Email">The email to send information to</param>
-        public void SendLoginInformation(string Email)
-        {
-            this.SendLoginInformation(this.UserRepository.FirstOrDefault(u => u.Email == Email));
-        }
+        public void SendLoginInformation(string Email) => this.SendLoginInformation(this.UserRepository.FirstOrDefault(u => u.Email == Email));
 
         /// <summary>
         /// If email templating is enabled, Sends the specified email a message containing the login name of any associated user account
