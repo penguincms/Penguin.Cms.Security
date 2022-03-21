@@ -1,4 +1,4 @@
-﻿using Penguin.Cms.Entities;
+using Penguin.Cms.Entities;
 using Penguin.Persistence.Abstractions.Attributes.Control;
 using Penguin.Persistence.Abstractions.Attributes.Rendering;
 using Penguin.Security.Abstractions;
@@ -86,7 +86,6 @@ namespace Penguin.Cms.Security
                 existing.Type |= permission;
             }
         }
-
 
         /// <summary>
         /// When using newtonsoft, this ensures that entity permissions are not passed over with the entity if its serialized
