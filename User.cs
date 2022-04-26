@@ -66,7 +66,18 @@ namespace Penguin.Cms.Security
         /// </summary>
         [NotMapped]
         [DontAllow(DisplayContexts.List)]
-        public string Password { get => this.HashedPassword; set => this.HashedPassword = HashPassword(value); }
+        public string Password { 
+            get => this.HashedPassword;
+            set
+            {
+                //if the values are the same, this is some kind of weird model binding crap
+                //Since we return the hashed version when called and now its being set back.
+                if (value != this.HashedPassword)
+                {
+                    this.HashedPassword = HashPassword(value);
+                }
+            }
+        }
 
         /// <summary>
         /// A customizable collection of information not otherwise contained on this object
