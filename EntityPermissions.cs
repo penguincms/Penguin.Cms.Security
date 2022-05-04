@@ -93,6 +93,9 @@ namespace Penguin.Cms.Security
         /// </summary>
         /// <returns>False</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Used by Newtonsoft")]
-        public bool ShouldSerializePermissions() => false;
+        public bool ShouldSerializePermissions()
+        {
+            return false;
+        }
     }
 }

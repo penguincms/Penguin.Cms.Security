@@ -109,7 +109,7 @@ namespace Penguin.Cms.Security.Extensions
 
             if (target.HasGroup(thisGroup))
             {
-                target.Groups.Remove(target.Groups.First(g => string.Equals(thisGroup.Name, g.ExternalId, StringComparison.InvariantCultureIgnoreCase)));
+                _ = target.Groups.Remove(target.Groups.First(g => string.Equals(thisGroup.Name, g.ExternalId, StringComparison.InvariantCultureIgnoreCase)));
             }
         }
     }

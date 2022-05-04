@@ -143,12 +143,18 @@ namespace Penguin.Cms.Security
         /// Hashes the Type and the External ID
         /// </summary>
         /// <returns>Hashes the Type and the External ID</returns>
-        public override int GetHashCode() => this.TypeName.GetHashCode() + this.ExternalId.GetHashCode();
+        public override int GetHashCode()
+        {
+            return this.TypeName.GetHashCode() + this.ExternalId.GetHashCode();
+        }
 
         /// <summary>
         /// Returns the ExternalId
         /// </summary>
         /// <returns>The ExternalId</returns>
-        public override string ToString() => this.ExternalId;
+        public override string ToString()
+        {
+            return this.ExternalId;
+        }
     }
 }

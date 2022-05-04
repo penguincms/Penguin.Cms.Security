@@ -1,4 +1,4 @@
-﻿using Penguin.Extensions.Strings.Security;
+﻿using Penguin.Extensions.String.Security;
 using Penguin.Persistence.Abstractions.Attributes.Control;
 using Penguin.Persistence.Abstractions.Attributes.Relations;
 using Penguin.Persistence.Abstractions.Attributes.Validation;
@@ -66,7 +66,8 @@ namespace Penguin.Cms.Security
         /// </summary>
         [NotMapped]
         [DontAllow(DisplayContexts.List)]
-        public string Password { 
+        public string Password
+        {
             get => this.HashedPassword;
             set
             {
@@ -101,6 +102,9 @@ namespace Penguin.Cms.Security
         /// </summary>
         /// <param name="password">The password to hash</param>
         /// <returns>The hashed password</returns>
-        public static string HashPassword(string password) => password.ComputeSha512Hash();
+        public static string HashPassword(string password)
+        {
+            return password.ComputeSha512Hash();
+        }
     }
 }
