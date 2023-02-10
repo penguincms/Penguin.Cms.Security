@@ -17,7 +17,7 @@ namespace Penguin.Cms.Security.Extensions
             T existingGroup = repository.FirstOrDefault(gr => gr.ExternalId == Name);
             if (existingGroup == null)
             {
-                T thisGroup = new T()
+                T thisGroup = new()
                 {
                     ExternalId = Name,
                     Description = Description,
@@ -40,6 +40,7 @@ namespace Penguin.Cms.Security.Extensions
         /// <summary>
         /// Gets a group or role by name
         /// </summary>
+        /// <param name="repository"></param>
         /// <param name="Name">The name to check for</param>
         /// <returns>The group/role or null</returns>
         public static T GetByName<T>(this IRepository<T> repository, string Name) where T : GroupRole

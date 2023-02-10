@@ -27,7 +27,7 @@ namespace Penguin.Cms.Security.Extensions
                 throw new ArgumentNullException(nameof(thisGroup));
             }
 
-            target.Groups = target.Groups ?? new List<Group>();
+            target.Groups ??= new List<Group>();
 
             if (!target.HasGroup(thisGroup))
             {
@@ -52,7 +52,7 @@ namespace Penguin.Cms.Security.Extensions
                 throw new ArgumentNullException(nameof(thisRole));
             }
 
-            target.Roles = target.Roles ?? new List<Role>();
+            target.Roles ??= new List<Role>();
 
             if (!target.HasRole(thisRole))
             {
@@ -77,7 +77,7 @@ namespace Penguin.Cms.Security.Extensions
                 throw new ArgumentNullException(nameof(thisRole));
             }
 
-            target.Roles = target.Roles ?? new List<Role>();
+            target.Roles ??= new List<Role>();
 
             if (!target.HasRole(thisRole))
             {
@@ -109,7 +109,7 @@ namespace Penguin.Cms.Security.Extensions
 
             if (target.HasGroup(thisGroup))
             {
-                _ = target.Groups.Remove(target.Groups.First(g => string.Equals(thisGroup.Name, g.ExternalId, StringComparison.InvariantCultureIgnoreCase)));
+                _ = target.Groups.Remove(target.Groups.First(g => string.Equals(thisGroup.Name, g.ExternalId, StringComparison.OrdinalIgnoreCase)));
             }
         }
     }

@@ -8,6 +8,7 @@ namespace Penguin.Cms.Security.Extensions
         /// <summary>
         /// Returns the user profile for a user with the requested login
         /// </summary>
+        /// <param name="repository"></param>
         /// <param name="login">The login of the user that owns the profile</param>
         /// <returns>The users profile</returns>
         public static UserProfile GetByLogin(this IRepository<UserProfile> repository, string login)

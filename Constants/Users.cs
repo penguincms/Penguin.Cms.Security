@@ -11,7 +11,7 @@ namespace Penguin.Cms.Security.Constants
         /// <summary>
         /// The default system administrator log in for the system
         /// </summary>
-        public static User Admin => new User()
+        public static User Admin => new()
         {
             FirstName = UserStrings.Admin.Name,
             Login = UserStrings.Admin.Name,
@@ -26,7 +26,7 @@ namespace Penguin.Cms.Security.Constants
         /// <summary>
         /// The default system administrator log in for the system
         /// </summary>
-        public static User Guest => new User()
+        public static User Guest => new()
         {
             FirstName = UserStrings.Guest.Name,
             Login = UserStrings.Guest.Name,

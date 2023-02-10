@@ -194,6 +194,9 @@
             An object that tracks permissions for entities
             </summary>
         </member>
+        <member name="P:Penguin.Cms.Security.EntityPermissions._Id">
+            <inheritdoc/>
+        </member>
         <member name="P:Penguin.Cms.Security.EntityPermissions.AddPermissions">
             <summary>
             Setting this object adds the defined permissions to the underlying collection.
@@ -234,6 +237,7 @@
             <summary>
             Gets a group or role by name
             </summary>
+            <param name="repository"></param>
             <param name="Name">The name to check for</param>
             <returns>The group/role or null</returns>
         </member>
@@ -247,6 +251,7 @@
             <summary>
             Returns the user profile for a user with the requested login
             </summary>
+            <param name="repository"></param>
             <param name="login">The login of the user that owns the profile</param>
             <returns>The users profile</returns>
         </member>

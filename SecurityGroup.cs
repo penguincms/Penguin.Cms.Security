@@ -36,13 +36,11 @@ namespace Penguin.Cms.Security
                 //by storing the "set" guid in the underlying object and only returning it
                 //if the object is "empty". we cant use id = 0 because then it would not
                 //store properly for new objects
-                if (!Guid.TryParse(this.ExternalId, out Guid _))
+                if (!Guid.TryParse(ExternalId, out Guid _))
                 {
-                    using (MD5 md5 = MD5.Create())
-                    {
-                        byte[] hash = md5.ComputeHash(Encoding.Default.GetBytes(this.TypeName + "." + this.ExternalId));
-                        return new Guid(hash);
-                    }
+                    using MD5 md5 = MD5.Create();
+                    byte[] hash = md5.ComputeHash(Encoding.Default.GetBytes(TypeName + "." + ExternalId));
+                    return new Guid(hash);
                 }
                 else
                 {
@@ -86,18 +84,7 @@ namespace Penguin.Cms.Security
         /// <returns>If they are NOT equal</returns>
         public static bool operator !=(SecurityGroup obj1, SecurityGroup obj2)
         {
-            if (obj1 is null ^ obj2 is null)
-            {
-                return true;
-            }
-            else if (obj1 is null && obj2 is null)
-            {
-                return false;
-            }
-            else
-            {
-                return obj1?.GetHashCode() != obj2?.GetHashCode();
-            }
+            return obj1 is null ^ obj2 is null || (obj1 is not null || obj2 is not null) && obj1?.GetHashCode() != obj2?.GetHashCode();
         }
 
         /// <summary>
@@ -108,18 +95,7 @@ namespace Penguin.Cms.Security
         /// <returns>If they are equal</returns>
         public static bool operator ==(SecurityGroup obj1, SecurityGroup obj2)
         {
-            if (obj1 is null ^ obj2 is null)
-            {
-                return false;
-            }
-            else if (obj1 is null && obj2 is null)
-            {
-                return true;
-            }
-            else
-            {
-                return obj1?.GetHashCode() == obj2?.GetHashCode();
-            }
+            return !(obj1 is null ^ obj2 is null) && ((obj1 is null && obj2 is null) || obj1?.GetHashCode() == obj2?.GetHashCode());
         }
 
         /// <summary>
@@ -129,14 +105,8 @@ namespace Penguin.Cms.Security
         /// <returns>If they are equal</returns>
         public override bool Equals(object obj)
         {
-            if (obj is null || !(obj is Entity))
-            {
-                return false;
-            }
-            else
-            {
-                return object.ReferenceEquals(this, obj) || ((obj as Entity).GetHashCode() == this.GetHashCode());
-            }
+            return obj is not null && obj is Entity
+&& (object.ReferenceEquals(this, obj) || ((obj as Entity).GetHashCode() == GetHashCode()));
         }
 
         /// <summary>
@@ -145,7 +115,7 @@ namespace Penguin.Cms.Security
         /// <returns>Hashes the Type and the External ID</returns>
         public override int GetHashCode()
         {
-            return this.TypeName.GetHashCode() + this.ExternalId.GetHashCode();
+            return TypeName.GetHashCode() + ExternalId.GetHashCode();
         }
 
         /// <summary>
@@ -154,7 +124,7 @@ namespace Penguin.Cms.Security
         /// <returns>The ExternalId</returns>
         public override string ToString()
         {
-            return this.ExternalId;
+            return ExternalId;
         }
     }
 }

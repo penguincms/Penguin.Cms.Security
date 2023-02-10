@@ -16,7 +16,7 @@ namespace Penguin.Cms.Security
         [EagerLoad(1)]
         public SecurityGroup SecurityGroup { get; set; }
 
-        ISecurityGroup ISecurityGroupPermission.SecurityGroup => this.SecurityGroup;
+        ISecurityGroup ISecurityGroupPermission.SecurityGroup => SecurityGroup;
 
         /// <summary>
         /// Defines the type of access that the security group has to the permissionable entity
@@ -30,8 +30,8 @@ namespace Penguin.Cms.Security
         /// <param name="type">The type of access that the security group has to the permissionable entity</param>
         public SecurityGroupPermission(SecurityGroup securityGroup, PermissionTypes type)
         {
-            this.Type = type;
-            this.SecurityGroup = securityGroup;
+            Type = type;
+            SecurityGroup = securityGroup;
         }
 
         /// <summary>

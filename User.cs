@@ -36,7 +36,7 @@ namespace Penguin.Cms.Security
         [DontAllow(DisplayContexts.List)]
         public List<Group> Groups { get; set; } = new List<Group>();
 
-        IReadOnlyList<IGroup> IHasGroups.Groups => this.Groups;
+        IReadOnlyList<IGroup> IHasGroups.Groups => Groups;
 
         /// <summary>
         /// The post-hash password. Setting this will not alter the password in any way
@@ -53,7 +53,7 @@ namespace Penguin.Cms.Security
         /// A unique log in for the user, used to access the system
         /// </summary>
         [NotMapped]
-        public string Login { get => this.ExternalId; set => this.ExternalId = value; }
+        public string Login { get => ExternalId; set => ExternalId = value; }
 
         /// <summary>
         /// This item should increment every time a log in attempt is failed, and reset when sucessfull
@@ -68,14 +68,14 @@ namespace Penguin.Cms.Security
         [DontAllow(DisplayContexts.List)]
         public string Password
         {
-            get => this.HashedPassword;
+            get => HashedPassword;
             set
             {
                 //if the values are the same, this is some kind of weird model binding crap
                 //Since we return the hashed version when called and now its being set back.
-                if (value != this.HashedPassword)
+                if (value != HashedPassword)
                 {
-                    this.HashedPassword = HashPassword(value);
+                    HashedPassword = HashPassword(value);
                 }
             }
         }
@@ -95,7 +95,7 @@ namespace Penguin.Cms.Security
         [DontAllow(DisplayContexts.List)]
         public List<Role> Roles { get; set; } = new List<Role>();
 
-        IReadOnlyList<IRole> IHasRoles.Roles => this.Roles;
+        IReadOnlyList<IRole> IHasRoles.Roles => Roles;
 
         /// <summary>
         /// The user password hashing function for use during authentication

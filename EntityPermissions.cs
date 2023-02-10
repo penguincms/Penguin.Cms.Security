@@ -15,6 +15,7 @@ namespace Penguin.Cms.Security
     public class EntityPermissions : Entity, IEntityPermissions
     {
         private const string NULL_SECURITY_GROUP_MESSAGE = "Can not assign access to null security group";
+        /// <inheritdoc/>
 
         [DontAllow(DisplayContexts.Any)]
         public override int _Id { get => base._Id; set => base._Id = value; }
@@ -36,7 +37,7 @@ namespace Penguin.Cms.Security
 
                 foreach (SecurityGroupPermission permission in value)
                 {
-                    this.AddPermission(permission.SecurityGroup, permission.Type);
+                    AddPermission(permission.SecurityGroup, permission.Type);
                 }
             }
         }
@@ -53,14 +54,14 @@ namespace Penguin.Cms.Security
         [Display(GroupName = "table")]
         public List<SecurityGroupPermission> Permissions { get; set; }
 
-        IReadOnlyList<ISecurityGroupPermission> IEntityPermissions.Permissions => this.Permissions;
+        IReadOnlyList<ISecurityGroupPermission> IEntityPermissions.Permissions => Permissions;
 
         /// <summary>
         /// Constructs a new instance of a permissionable entity and initializes the permissions list
         /// </summary>
         public EntityPermissions()
         {
-            this.Permissions = new List<SecurityGroupPermission>();
+            Permissions = new List<SecurityGroupPermission>();
         }
 
         /// <summary>
@@ -75,11 +76,11 @@ namespace Penguin.Cms.Security
                 throw new ArgumentNullException(nameof(securityGroup), NULL_SECURITY_GROUP_MESSAGE);
             }
 
-            SecurityGroupPermission existing = this.Permissions.SingleOrDefault(p => p.SecurityGroup == securityGroup);
+            SecurityGroupPermission existing = Permissions.SingleOrDefault(p => p.SecurityGroup == securityGroup);
 
             if (existing is null)
             {
-                this.Permissions.Add(new SecurityGroupPermission() { SecurityGroup = securityGroup, Type = permission });
+                Permissions.Add(new SecurityGroupPermission() { SecurityGroup = securityGroup, Type = permission });
             }
             else
             {

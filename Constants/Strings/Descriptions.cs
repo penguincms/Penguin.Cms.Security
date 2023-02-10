@@ -1,6 +1,6 @@
 ﻿namespace Penguin.Cms.Security.Constants.Strings
 {
-    public partial class Roles
+    public static partial class Roles
     {
         /// <summary>
         /// Hardcoded descriptions for default roles

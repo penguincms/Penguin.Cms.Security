@@ -21,7 +21,7 @@ namespace Penguin.Cms.Security
         /// </summary>
         [NotMapped]
         [Display(Order = -1000)]
-        public string Name { get => this.ExternalId; set => this.ExternalId = value; }
+        public string Name { get => ExternalId; set => ExternalId = value; }
 
         /// <summary>
         /// Returns the Name/ExternalId
@@ -29,7 +29,7 @@ namespace Penguin.Cms.Security
         /// <returns>The Name/ExternalId</returns>
         public override string ToString()
         {
-            return this.Name;
+            return Name;
         }
     }
 }

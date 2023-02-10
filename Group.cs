@@ -20,7 +20,7 @@ namespace Penguin.Cms.Security
         [CustomRoute(DisplayContexts.List, "Render", "AsCSV")]
         public List<Role> Roles { get; set; }
 
-        IReadOnlyList<IRole> IHasRoles.Roles => this.Roles;
+        IReadOnlyList<IRole> IHasRoles.Roles => Roles;
 
         /// <summary>
         /// A virtual list of users assigned to this group
@@ -34,7 +34,7 @@ namespace Penguin.Cms.Security
         /// </summary>
         public Group()
         {
-            this.Roles = new List<Role>();
+            Roles = new List<Role>();
         }
     }
 }

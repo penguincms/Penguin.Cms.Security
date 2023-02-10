@@ -33,7 +33,7 @@ namespace Penguin.Cms.Security
         {
             T toReturn = Activator.CreateInstance<T>();
 
-            foreach (ProfileData pd in this.Fields)
+            foreach (ProfileData pd in Fields)
             {
                 PropertyInfo prop = typeof(T).GetProperty(pd.Name);
 
@@ -62,11 +62,11 @@ namespace Penguin.Cms.Security
                 string Name = propertyInfo.Name;
                 string Value = propertyInfo.GetValue(data)?.ToString();
 
-                ProfileData existing = this.Fields?.Where(f => f.Name == Name).FirstOrDefault();
+                ProfileData existing = Fields?.Where(f => f.Name == Name).FirstOrDefault();
 
                 if (existing is null)
                 {
-                    this.Fields.Add(new ProfileData() { Name = Name, Value = Value });
+                    Fields.Add(new ProfileData() { Name = Name, Value = Value });
                 }
                 else
                 {

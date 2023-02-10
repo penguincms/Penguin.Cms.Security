@@ -35,9 +35,9 @@ namespace Penguin.Cms.Security.Services
         /// <param name="authenticationTokenRepository">An IRepository implementation for accessing authentication tokens</param>
         public UserService(IRepository<User> userRepository, ISendTemplates emailTemplateRepository, IRepository<AuthenticationToken> authenticationTokenRepository)
         {
-            this.UserRepository = userRepository;
-            this.EmailTemplateRepository = emailTemplateRepository;
-            this.AuthenticationTokenRepository = authenticationTokenRepository;
+            UserRepository = userRepository;
+            EmailTemplateRepository = emailTemplateRepository;
+            AuthenticationTokenRepository = authenticationTokenRepository;
         }
 
         /// <summary>
@@ -47,12 +47,9 @@ namespace Penguin.Cms.Security.Services
         /// <returns>A user if a the token is valid, otherwise null</returns>
         public User GetByAuthenticationToken(AuthenticationToken token)
         {
-            if (this.AuthenticationTokenRepository.Where(t => t.User == token.User && t.Guid == token.Guid && t.Expiration > DateTime.Now).Any())
-            {
-                return this.UserRepository.Where(u => u.Guid == token.User).FirstOrDefault();
-            }
-
-            return null;
+            return AuthenticationTokenRepository.Where(t => t.User == token.User && t.Guid == token.Guid && t.Expiration > DateTime.Now).Any()
+                ? UserRepository.Where(u => u.Guid == token.User).FirstOrDefault()
+                : null;
         }
 
         /// <summary>
@@ -62,12 +59,9 @@ namespace Penguin.Cms.Security.Services
         /// <returns>A user if a the token is valid, otherwise null</returns>
         public User GetByAuthenticationToken(Guid token)
         {
-            if (this.AuthenticationTokenRepository.SingleOrDefault(t => t.Guid == token && t.Expiration > DateTime.Now) is AuthenticationToken matchedToken)
-            {
-                return this.UserRepository.Where(u => u.Guid == matchedToken.User).FirstOrDefault();
-            }
-
-            return null;
+            return AuthenticationTokenRepository.SingleOrDefault(t => t.Guid == token && t.Expiration > DateTime.Now) is AuthenticationToken matchedToken
+                ? UserRepository.Where(u => u.Guid == matchedToken.User).FirstOrDefault()
+                : null;
         }
 
         /// <summary>
@@ -77,7 +71,7 @@ namespace Penguin.Cms.Security.Services
         /// <returns>Returns an authentication token that can be used to reset a password.</returns>
         public AuthenticationToken RequestPasswordReset(string Login)
         {
-            return this.RequestPasswordReset(this.UserRepository.Find(Login), Guid.Empty);
+            return RequestPasswordReset(UserRepository.Find(Login), Guid.Empty);
         }
 
         /// <summary>
@@ -94,7 +88,7 @@ namespace Penguin.Cms.Security.Services
             {
                 string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
                 char[] stringChars = new char[16];
-                Random random = new Random();
+                Random random = new();
 
                 for (int i = 0; i < stringChars.Length; i++)
                 {
@@ -103,7 +97,7 @@ namespace Penguin.Cms.Security.Services
 
                 Token = Guid.NewGuid();
 
-                this.EmailTemplateRepository.TrySendTemplate(new Dictionary<string, object>()
+                EmailTemplateRepository.TrySendTemplate(new Dictionary<string, object>()
                 {
                     [nameof(targetUser)] = targetUser,
                     [nameof(Token)] = Token
@@ -111,16 +105,16 @@ namespace Penguin.Cms.Security.Services
 
                 AuthenticationToken token;
 
-                using (this.AuthenticationTokenRepository.WriteContext())
+                using (AuthenticationTokenRepository.WriteContext())
                 {
                     token = new AuthenticationToken()
                     {
                         Expiration = DateTime.Now.AddMinutes(30),
-                        User = this.UserRepository.Find(targetUser._Id).Guid,
+                        User = UserRepository.Find(targetUser._Id).Guid,
                         Guid = Token
                     };
 
-                    this.AuthenticationTokenRepository.AddOrUpdate(token);
+                    AuthenticationTokenRepository.AddOrUpdate(token);
                 }
 
                 return token;
@@ -135,7 +129,7 @@ namespace Penguin.Cms.Security.Services
         /// <param name="Email">The email to send information to</param>
         public void SendLoginInformation(string Email)
         {
-            this.SendLoginInformation(this.UserRepository.FirstOrDefault(u => u.Email == Email));
+            SendLoginInformation(UserRepository.FirstOrDefault(u => u.Email == Email));
         }
 
         /// <summary>
@@ -147,7 +141,7 @@ namespace Penguin.Cms.Security.Services
         {
             if (targetUser != null)
             {
-                this.EmailTemplateRepository.GenerateEmailFromTemplate(new Dictionary<string, object>()
+                EmailTemplateRepository.GenerateEmailFromTemplate(new Dictionary<string, object>()
                 {
                     [nameof(targetUser)] = targetUser
                 });
