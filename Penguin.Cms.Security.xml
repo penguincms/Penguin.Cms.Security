@@ -195,7 +195,7 @@
             </summary>
         </member>
         <member name="P:Penguin.Cms.Security.EntityPermissions._Id">
-            <inheritdoc/>
+            <inheritdoc />
         </member>
         <member name="P:Penguin.Cms.Security.EntityPermissions.AddPermissions">
             <summary>
