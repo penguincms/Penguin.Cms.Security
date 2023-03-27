@@ -15,11 +15,11 @@
     <EmbeddedResource Remove="Static\**" />
     <None Remove="Static\**" />
     <PackageReference Include="Loxifi.StringConvert" Version="0.1.0" />
-    <PackageReference Include="Penguin.Auditing.Abstractions" Version="5.2.0" />
-    <PackageReference Include="Penguin.Email.Templating.Abstractions" Version="5.2.0" />
-    <PackageReference Include="Penguin.Security.Abstractions" Version="5.2.0" />
-    <PackageReference Include="Penguin.Cms.Abstractions" Version="5.2.0" />
-    <PackageReference Include="Penguin.Cms.Entities" Version="5.2.0" />
-    <PackageReference Include="Penguin.Cms.Email.Abstractions" Version="5.2.0" />
+    <PackageReference Include="Penguin.Auditing.Abstractions" Version="5.4.0" />
+    <PackageReference Include="Penguin.Email.Templating.Abstractions" Version="5.4.0" />
+    <PackageReference Include="Penguin.Security.Abstractions" Version="5.4.0" />
+    <PackageReference Include="Penguin.Cms.Abstractions" Version="5.4.0" />
+    <PackageReference Include="Penguin.Cms.Entities" Version="5.4.0" />
+    <PackageReference Include="Penguin.Cms.Email.Abstractions" Version="5.4.0" />
   </ItemGroup>
 </Project>
