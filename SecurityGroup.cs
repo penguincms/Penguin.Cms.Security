@@ -73,7 +73,7 @@ namespace Penguin.Cms.Security
             /// <summary>
             /// The group was automatically pulled from Active Directory
             /// </summary>
-            ActiveDirectory
+            Other
         }
 
         /// <summary>

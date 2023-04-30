@@ -428,7 +428,7 @@
             The group was created by the client to extend functionality
             </summary>
         </member>
-        <member name="F:Penguin.Cms.Security.SecurityGroup.SecurityGroupSource.ActiveDirectory">
+        <member name="F:Penguin.Cms.Security.SecurityGroup.SecurityGroupSource.Other">
             <summary>
             The group was automatically pulled from Active Directory
             </summary>
